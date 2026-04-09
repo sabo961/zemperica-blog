@@ -100,7 +100,16 @@ def base_css():
 
     @media (max-width: 768px) {
         body {
-            background-image: none;
+            background-position: right center;
+            background-size: auto 100vh;
+        }
+        .post-card, .about, .suggest-form, article {
+            background: rgba(10, 10, 15, 0.88);
+        }
+        header {
+            background: rgba(10, 10, 15, 0.75);
+            border-radius: 8px;
+            padding: 16px;
         }
     }
 
