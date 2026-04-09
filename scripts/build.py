@@ -455,7 +455,7 @@ def build():
     # Index — latest posts
     cards = "\n".join(post_card(p) for p in posts[:10])
     index_body = f"""
-    <div class="search-box"><input type="text" id="postSearch" placeholder="Pretraži ludosti..."></div>
+    <div class="search-box"><input type="text" id="postSearch" placeholder="Pretraži dnevnik..."></div>
     <h2 style="color:#a78bda; margin-bottom:20px; font-size:1em; letter-spacing:2px;">NAJNOVIJE LUDOSTI</h2>
     {cards}
     """
@@ -475,7 +475,7 @@ def build():
             archive_html += post_card(p) + "\n"
 
     archive_body = f"""
-    <div class="search-box"><input type="text" id="postSearch" placeholder="Pretraži ludosti..."></div>
+    <div class="search-box"><input type="text" id="postSearch" placeholder="Pretraži dnevnik..."></div>
     <h2 style="color:#a78bda; margin-bottom:20px; font-size:1em; letter-spacing:2px;">ARHIVA LUDOSTI</h2>
     {archive_html}
     """
