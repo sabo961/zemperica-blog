@@ -91,6 +91,11 @@ def base_css():
         color: #c8c8d8;
         font-family: 'Courier New', monospace;
         min-height: 100vh;
+        background-image: url('/hero.png');
+        background-position: right center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: auto 100vh;
     }
 
     .stars {
@@ -300,7 +305,6 @@ def html_page(title, body, active_nav=""):
 <div class="stars"></div>
 <div class="container">
     <header>
-        <img src="/hero.png" alt="Žemperica" style="width:160px; height:160px; border-radius:50%; object-fit:cover; border:2px solid #7b52ab33; margin-bottom:16px;">
         <h1>{SITE_TITLE}</h1>
         <div class="subtitle">{SITE_SUBTITLE}</div>
         <div class="desc">{SITE_DESC}</div>
