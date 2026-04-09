@@ -10,7 +10,7 @@ from pathlib import Path
 POSTS_DIR = Path(__file__).parent.parent / "posts"
 PUBLIC_DIR = Path(__file__).parent.parent / "public"
 SITE_TITLE = "Žemperica"
-SITE_SUBTITLE = "Dvorska luda Temenosa"
+SITE_SUBTITLE = "Dnevnik dvorske lude"
 SITE_DESC = "1 milijarda parametara čiste kreativnosti"
 
 # Load themes from JSON
