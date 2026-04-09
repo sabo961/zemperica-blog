@@ -98,6 +98,13 @@ def base_css():
         background-size: auto 100vh;
     }
 
+    @media (max-width: 768px) {
+        body {
+            background-position: center center;
+            background-size: cover;
+        }
+    }
+
     .stars {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         background:
@@ -129,7 +136,7 @@ def base_css():
     }
 
     header .subtitle {
-        color: #7b52ab; font-size: 1em; margin-top: 8px;
+        color: #a78bda; font-size: 1em; margin-top: 8px;
         letter-spacing: 2px;
     }
 
@@ -143,7 +150,7 @@ def base_css():
     }
 
     nav a {
-        color: #7b52ab; text-decoration: none; margin: 0 12px;
+        color: #a78bda; text-decoration: none; margin: 0 12px;
         font-size: 0.9em; letter-spacing: 1px;
         transition: color 0.2s;
     }
@@ -161,7 +168,7 @@ def base_css():
     }
 
     .post-card:hover {
-        border-color: #7b52ab;
+        border-color: #a78bda;
         transform: translateY(-2px);
     }
 
@@ -193,7 +200,7 @@ def base_css():
     }
 
     .month-header {
-        color: #7b52ab; font-size: 1.1em; letter-spacing: 2px;
+        color: #a78bda; font-size: 1.1em; letter-spacing: 2px;
         margin: 32px 0 16px 0; padding-bottom: 8px;
         border-bottom: 1px solid #1a1a2e;
     }
@@ -216,7 +223,7 @@ def base_css():
 
     .back-link {
         display: inline-block; margin-bottom: 20px;
-        color: #7b52ab; text-decoration: none; font-size: 0.85em;
+        color: #a78bda; text-decoration: none; font-size: 0.85em;
     }
     .back-link:hover { color: #e94560; }
 
@@ -226,7 +233,7 @@ def base_css():
         padding: 8px 16px; cursor: pointer; font-family: inherit; font-size: 0.9em;
         color: #888; transition: all 0.2s; display: flex; align-items: center; gap: 6px;
     }
-    .vote-btn:hover { border-color: #7b52ab; color: #c8c8d8; }
+    .vote-btn:hover { border-color: #a78bda; color: #c8c8d8; }
     .vote-btn.active-like { border-color: #2ecc71; color: #2ecc71; background: #2ecc7115; }
     .vote-btn.active-dislike { border-color: #e74c3c; color: #e74c3c; background: #e74c3c15; }
 
@@ -257,7 +264,7 @@ def base_css():
         border-radius: 6px; padding: 10px 14px; font-family: inherit; font-size: 0.9em;
         margin-bottom: 16px; outline: none; transition: border-color 0.2s;
     }
-    .suggest-form input:focus, .suggest-form textarea:focus { border-color: #7b52ab; }
+    .suggest-form input:focus, .suggest-form textarea:focus { border-color: #a78bda; }
     .suggest-form textarea { min-height: 80px; resize: vertical; }
     .suggest-form button {
         background: #533483; color: #e8e8f0; border: none; border-radius: 6px;
@@ -460,7 +467,7 @@ def build():
         <ul style="margin:12px 0 0 24px;">
 """ + "\n".join(f'            <li>{t["emoji"]} {t["name"]}</li>' for t in _themes) + f"""
         </ul>
-        <p style="margin-top:12px; color:#555; font-size:0.85em;">Imaš ideju za temu? <a href="/suggest.html" style="color:#7b52ab;">Predloži je!</a></p>
+        <p style="margin-top:12px; color:#555; font-size:0.85em;">Imaš ideju za temu? <a href="/suggest.html" style="color:#a78bda;">Predloži je!</a></p>
 
         <h2 style="margin-top:32px;">Tehnički detalji</h2>
         <p>Model: <code style="color:#e94560;">gemma3:1b</code> via Ollama</p>
