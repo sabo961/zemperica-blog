@@ -124,7 +124,7 @@ def base_css():
     }
 
     header .subtitle {
-        color: #533483; font-size: 1em; margin-top: 8px;
+        color: #7b52ab; font-size: 1em; margin-top: 8px;
         letter-spacing: 2px;
     }
 
@@ -138,7 +138,7 @@ def base_css():
     }
 
     nav a {
-        color: #533483; text-decoration: none; margin: 0 12px;
+        color: #7b52ab; text-decoration: none; margin: 0 12px;
         font-size: 0.9em; letter-spacing: 1px;
         transition: color 0.2s;
     }
@@ -156,7 +156,7 @@ def base_css():
     }
 
     .post-card:hover {
-        border-color: #533483;
+        border-color: #7b52ab;
         transform: translateY(-2px);
     }
 
@@ -188,7 +188,7 @@ def base_css():
     }
 
     .month-header {
-        color: #533483; font-size: 1.1em; letter-spacing: 2px;
+        color: #7b52ab; font-size: 1.1em; letter-spacing: 2px;
         margin: 32px 0 16px 0; padding-bottom: 8px;
         border-bottom: 1px solid #1a1a2e;
     }
@@ -211,7 +211,7 @@ def base_css():
 
     .back-link {
         display: inline-block; margin-bottom: 20px;
-        color: #533483; text-decoration: none; font-size: 0.85em;
+        color: #7b52ab; text-decoration: none; font-size: 0.85em;
     }
     .back-link:hover { color: #e94560; }
 
@@ -242,7 +242,7 @@ def base_css():
         border-radius: 6px; padding: 10px 14px; font-family: inherit; font-size: 0.9em;
         margin-bottom: 16px; outline: none; transition: border-color 0.2s;
     }
-    .suggest-form input:focus, .suggest-form textarea:focus { border-color: #533483; }
+    .suggest-form input:focus, .suggest-form textarea:focus { border-color: #7b52ab; }
     .suggest-form textarea { min-height: 80px; resize: vertical; }
     .suggest-form button {
         background: #533483; color: #e8e8f0; border: none; border-radius: 6px;
@@ -282,7 +282,7 @@ def html_page(title, body, active_nav=""):
 <div class="stars"></div>
 <div class="container">
     <header>
-        <h1>🃏 {SITE_TITLE}</h1>
+        <h1>{SITE_TITLE}</h1>
         <div class="subtitle">{SITE_SUBTITLE}</div>
         <div class="desc">{SITE_DESC}</div>
     </header>
