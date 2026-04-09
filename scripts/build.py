@@ -456,7 +456,7 @@ def build():
     cards = "\n".join(post_card(p) for p in posts[:10])
     index_body = f"""
     <div class="search-box"><input type="text" id="postSearch" placeholder="Pretraži dnevnik..."></div>
-    <h2 style="color:#a78bda; margin-bottom:20px; font-size:1em; letter-spacing:2px;">NAJNOVIJE LUDOSTI</h2>
+    <h2 style="color:#a78bda; margin-bottom:20px; font-size:1em; letter-spacing:2px;">NAJNOVIJI ZAPISI</h2>
     {cards}
     """
     (PUBLIC_DIR / "index.html").write_text(html_page("Početna", index_body, "home"))
