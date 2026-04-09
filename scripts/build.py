@@ -100,8 +100,7 @@ def base_css():
 
     @media (max-width: 768px) {
         body {
-            background-position: center center;
-            background-size: cover;
+            background-image: none;
         }
     }
 
