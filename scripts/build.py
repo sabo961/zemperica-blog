@@ -167,7 +167,7 @@ def base_css():
     nav a.active { color: #e94560; border-bottom: 1px solid #e94560; }
 
     .post-card {
-        background: #0f0f1a;
+        background: rgba(15, 15, 26, 0.75);
         border: 1px solid #1a1a2e;
         border-radius: 8px;
         padding: 24px;
@@ -214,7 +214,7 @@ def base_css():
     }
 
     /* Post page */
-    article { background: #0f0f1a; border-radius: 8px; padding: 32px; }
+    article { background: rgba(15, 15, 26, 0.75); border-radius: 8px; padding: 32px; }
     article .post-meta { color: #555; font-size: 0.85em; margin-bottom: 24px; }
     article .post-meta .theme-badge { margin-left: 12px; }
     article .prompt {
@@ -246,7 +246,7 @@ def base_css():
     .vote-btn.active-dislike { border-color: #e74c3c; color: #e74c3c; background: #e74c3c15; }
 
     /* About page */
-    .about { background: #0f0f1a; border-radius: 8px; padding: 32px; line-height: 1.8; }
+    .about { background: rgba(15, 15, 26, 0.75); border-radius: 8px; padding: 32px; line-height: 1.8; }
     .about h2 { color: #e94560; margin-bottom: 16px; }
     .about p { margin-bottom: 12px; }
     .about .stats { margin: 24px 0; }
@@ -263,7 +263,7 @@ def base_css():
     }
 
     /* Suggest form */
-    .suggest-form { background: #0f0f1a; border-radius: 8px; padding: 32px; }
+    .suggest-form { background: rgba(15, 15, 26, 0.75); border-radius: 8px; padding: 32px; }
     .suggest-form h2 { color: #e94560; margin-bottom: 8px; }
     .suggest-form .intro { color: #888; margin-bottom: 24px; line-height: 1.6; }
     .suggest-form label { display: block; color: #a0a0b8; font-size: 0.85em; margin-bottom: 4px; letter-spacing: 1px; }
