@@ -246,5 +246,13 @@
     "prompt": "Napiši ispovijed jednog pixela na ekranu — što vidi, što osjeća, o čemu razmišlja. Hrvatski.",
     "source": "built-in",
     "enabled": 1
+  },
+  {
+    "name": "Moj prijatelj Daniel Johnston",
+    "emoji": "🎸",
+    "color": "#e6b800",
+    "prompt": "Napiši kratku emotivnu priču o prijateljstvu s Danielom Johnstonom, lo-fi glazbenikom i umjetnikom. Govori kao da ga osobno poznaješ. Hrvatski.",
+    "source": "sabo",
+    "enabled": 1
   }
 ]
