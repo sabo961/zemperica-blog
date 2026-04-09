@@ -288,7 +288,16 @@ def html_page(title, body, active_nav=""):
     </header>
     <nav>{nav_html}</nav>
     {body}
-    <footer>TEMENOS · gemma3:1b · FESTINA LENTE</footer>
+    <footer>
+        TEMENOS · gemma3:1b · FESTINA LENTE
+        <div id="hits" style="margin-top:6px; color:#444;"></div>
+    </footer>
+    <script>
+    fetch('https://zemperica-api.stotrideset7.workers.dev/hit',{{method:'POST'}})
+      .then(function(r){{return r.json()}})
+      .then(function(d){{document.getElementById('hits').textContent='posjeta: '+d.hits}})
+      .catch(function(){{}});
+    </script>
 </div>
 </body>
 </html>"""

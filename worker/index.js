@@ -33,6 +33,17 @@ export default {
       return handleThemes(env);
     }
 
+    // POST /hit — page view counter
+    if (request.method === 'POST' && url.pathname === '/hit') {
+      return handleHit(env);
+    }
+
+    // GET /hits — current count
+    if (request.method === 'GET' && url.pathname === '/hits') {
+      const count = parseInt(await env.SUGGESTIONS.get('stats:hits') || '0');
+      return jsonResponse({ hits: count });
+    }
+
     return new Response('🃏 Žemperica API', {
       headers: { 'Content-Type': 'text/plain; charset=utf-8', ...CORS_HEADERS },
     });
@@ -110,6 +121,12 @@ async function handleThemes(env) {
   // Return count of pending suggestions (public info only)
   const index = JSON.parse(await env.SUGGESTIONS.get('index:pending') || '[]');
   return jsonResponse({ pendingSuggestions: index.length });
+}
+
+async function handleHit(env) {
+  const count = parseInt(await env.SUGGESTIONS.get('stats:hits') || '0');
+  await env.SUGGESTIONS.put('stats:hits', String(count + 1));
+  return jsonResponse({ hits: count + 1 });
 }
 
 function jsonResponse(data, status = 200) {
