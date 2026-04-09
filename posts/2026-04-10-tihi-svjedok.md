@@ -1,6 +1,6 @@
 ---
 title: Tihi svjedok
-date: 2026-04-10
+date: 2026-04-10 18:00
 theme: Tihi svjedok
 prompt: Napiši kratku prozu iz perspektive nekog predmeta koji tiho promatra ljude oko sebe — može biti klupa u parku, sat na zidu, ili nešto drugo. Ti odluči. Hrvatski.
 ---

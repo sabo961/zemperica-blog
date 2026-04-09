@@ -41,7 +41,11 @@ def parse_post(filepath):
 
     meta['body'] = match.group(2).strip()
     meta['slug'] = filepath.stem
-    meta['date_obj'] = datetime.strptime(meta['date'], '%Y-%m-%d')
+    date_str = meta['date'].strip()
+    try:
+        meta['date_obj'] = datetime.strptime(date_str, '%Y-%m-%d %H:%M')
+    except ValueError:
+        meta['date_obj'] = datetime.strptime(date_str, '%Y-%m-%d')
     return meta
 
 

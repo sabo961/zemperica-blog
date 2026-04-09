@@ -1,6 +1,6 @@
 ---
 title: Bura na Braču
-date: 2026-04-10
+date: 2026-04-10 22:00
 theme: Bura na Braču
 prompt: Napiši dramatičnu prozu o buri na Braču — vjetar, more, kamen, maslina koja se drži. Hrvatski.
 ---

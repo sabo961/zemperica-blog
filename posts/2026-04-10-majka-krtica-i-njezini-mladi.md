@@ -1,6 +1,6 @@
 ---
 title: Majka krtica i njezini mladi
-date: 2026-04-10
+date: 2026-04-10 20:00
 theme: Majka krtica i njezini mladi
 prompt: Napiši nježnu kratku priču o majci krtici i njezinim mladima koji prvi put izlaze iz rupe na svijetlo dana. Hrvatski.
 ---
