@@ -262,7 +262,7 @@ def base_css():
 
     footer {
         text-align: center; margin-top: 48px; padding-top: 24px;
-        border-top: 1px solid #1a1a2e; color: #333;
+        border-top: 1px solid #1a1a2e; color: #666;
         font-size: 0.75em; letter-spacing: 1px;
     }
 
