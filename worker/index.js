@@ -35,7 +35,7 @@ export default {
 
     // POST /hit — page view counter
     if (request.method === 'POST' && url.pathname === '/hit') {
-      return handleHit(env);
+      return handleHit(request, env);
     }
 
     // GET /hits — current count
@@ -123,10 +123,26 @@ async function handleThemes(env) {
   return jsonResponse({ pendingSuggestions: index.length });
 }
 
-async function handleHit(env) {
-  const count = parseInt(await env.SUGGESTIONS.get('stats:hits') || '0');
-  await env.SUGGESTIONS.put('stats:hits', String(count + 1));
-  return jsonResponse({ hits: count + 1 });
+async function handleHit(request, env) {
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+  const key = `visitor:${ip}`;
+  const seen = await env.SUGGESTIONS.get(key);
+
+  // Always count page view
+  const views = parseInt(await env.SUGGESTIONS.get('stats:views') || '0');
+  await env.SUGGESTIONS.put('stats:views', String(views + 1));
+
+  // Count unique visitor only once
+  if (!seen) {
+    await env.SUGGESTIONS.put(key, '1', { expirationTtl: 86400 * 365 });
+    const visitors = parseInt(await env.SUGGESTIONS.get('stats:visitors') || '0');
+    await env.SUGGESTIONS.put('stats:visitors', String(visitors + 1));
+  }
+
+  return jsonResponse({
+    visitors: parseInt(await env.SUGGESTIONS.get('stats:visitors') || '0'),
+    views: views + 1
+  });
 }
 
 function jsonResponse(data, status = 200) {

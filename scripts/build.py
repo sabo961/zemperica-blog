@@ -295,7 +295,7 @@ def html_page(title, body, active_nav=""):
     <script>
     fetch('https://zemperica-api.stotrideset7.workers.dev/hit',{{method:'POST'}})
       .then(function(r){{return r.json()}})
-      .then(function(d){{document.getElementById('hits').textContent='posjeta: '+d.hits}})
+      .then(function(d){{document.getElementById('hits').textContent=d.visitors+' posjetitelja · '+d.views+' pregleda'}})
       .catch(function(){{}});
     </script>
 </div>
