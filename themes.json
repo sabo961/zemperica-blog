@@ -254,5 +254,13 @@
     "prompt": "Napiši kratku emotivnu priču o prijateljstvu s Danielom Johnstonom, lo-fi glazbenikom i umjetnikom. Govori kao da ga osobno poznaješ. Hrvatski.",
     "source": "sabo",
     "enabled": 1
+  },
+  {
+    "name": "Majka krtica i njezini mladi",
+    "emoji": "🦔",
+    "color": "#8d6e63",
+    "prompt": "Napiši nježnu kratku priču o majci krtici i njezinim mladima koji prvi put izlaze iz rupe na svijetlo dana. Hrvatski.",
+    "source": "sabo",
+    "enabled": 1
   }
 ]
