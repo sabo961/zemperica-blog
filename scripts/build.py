@@ -409,9 +409,9 @@ def build():
         <h2 style="margin-top:32px;">Teme ({len(_themes)})</h2>
         <p>Žemperica rotira teme po danima:</p>
         <ul style="margin:12px 0 0 24px;">
-""" + "\n".join(f'            <li>{t["emoji"]} {t["name"]}</li>' for t in _themes) + """
+""" + "\n".join(f'            <li>{t["emoji"]} {t["name"]}</li>' for t in _themes) + f"""
         </ul>
-        <p style="margin-top:12px; color:#555; font-size:0.85em;">Imaš ideju za temu? <a href="/suggest.html" style="color:#533483;">Predloži je!</a></p>
+        <p style="margin-top:12px; color:#555; font-size:0.85em;">Imaš ideju za temu? <a href="/suggest.html" style="color:#7b52ab;">Predloži je!</a></p>
 
         <h2 style="margin-top:32px;">Tehnički detalji</h2>
         <p>Model: <code style="color:#e94560;">gemma3:1b</code> via Ollama</p>
