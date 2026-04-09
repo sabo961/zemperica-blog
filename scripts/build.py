@@ -161,6 +161,18 @@ def base_css():
         text-align: center; margin-bottom: 32px;
     }
 
+    .search-box {
+        text-align: center; margin-bottom: 24px;
+    }
+    .search-box input {
+        background: rgba(15, 15, 26, 0.75); border: 1px solid #2a2a3e; color: #c8c8d8;
+        border-radius: 6px; padding: 8px 14px; width: 60%; max-width: 400px;
+        font-family: inherit; font-size: 0.85em; outline: none;
+        transition: border-color 0.2s;
+    }
+    .search-box input:focus { border-color: #a78bda; }
+    .search-box input::placeholder { color: #555; }
+
     nav a {
         color: #a78bda; text-decoration: none; margin: 0 12px;
         font-size: 0.9em; letter-spacing: 1px;
@@ -330,6 +342,19 @@ def html_page(title, body, active_nav=""):
     </header>
     <nav>{nav_html}</nav>
     {body}
+    <script>
+    (function(){{
+      var s=document.getElementById('postSearch');
+      if(!s) return;
+      s.addEventListener('input',function(){{
+        var q=s.value.toLowerCase();
+        var cards=document.querySelectorAll('.post-card');
+        var months=document.querySelectorAll('.month-header');
+        cards.forEach(function(c){{c.style.display=c.textContent.toLowerCase().indexOf(q)>=0?'':'none'}});
+        months.forEach(function(m){{m.style.display=q?'none':''}});
+      }});
+    }})();
+    </script>
     <footer>
         TEMENOS · gemma3:1b · FESTINA LENTE
         <div id="hits" style="margin-top:6px; color:#444;"></div>
@@ -430,7 +455,8 @@ def build():
     # Index — latest posts
     cards = "\n".join(post_card(p) for p in posts[:10])
     index_body = f"""
-    <h2 style="color:#533483; margin-bottom:20px; font-size:1em; letter-spacing:2px;">NAJNOVIJE LUDOSTI</h2>
+    <div class="search-box"><input type="text" id="postSearch" placeholder="Pretraži ludosti..."></div>
+    <h2 style="color:#a78bda; margin-bottom:20px; font-size:1em; letter-spacing:2px;">NAJNOVIJE LUDOSTI</h2>
     {cards}
     """
     (PUBLIC_DIR / "index.html").write_text(html_page("Početna", index_body, "home"))
@@ -449,7 +475,8 @@ def build():
             archive_html += post_card(p) + "\n"
 
     archive_body = f"""
-    <h2 style="color:#533483; margin-bottom:20px; font-size:1em; letter-spacing:2px;">ARHIVA LUDOSTI</h2>
+    <div class="search-box"><input type="text" id="postSearch" placeholder="Pretraži ludosti..."></div>
+    <h2 style="color:#a78bda; margin-bottom:20px; font-size:1em; letter-spacing:2px;">ARHIVA LUDOSTI</h2>
     {archive_html}
     """
     (PUBLIC_DIR / "archive.html").write_text(html_page("Arhiva", archive_body, "archive"))
