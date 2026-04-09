@@ -320,7 +320,7 @@ def build_post_page(post):
 
     prompt_html = ""
     if post.get('prompt'):
-        prompt_html = f'<div class="prompt">Zadatak: {post["prompt"]}</div>'
+        prompt_html = f'<div class="prompt">Tema: {post["prompt"]}</div>'
 
     body = f"""
     <a href="/index.html" class="back-link">← natrag</a>
