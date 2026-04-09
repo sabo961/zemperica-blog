@@ -270,5 +270,21 @@
     "prompt": "Napiši kratku prozu iz perspektive nekog predmeta koji tiho promatra ljude oko sebe — može biti klupa u parku, sat na zidu, ili nešto drugo. Ti odluči. Hrvatski.",
     "source": "sabo",
     "enabled": 1
+  },
+  {
+    "name": "Bura na Braču",
+    "emoji": "🌬️",
+    "color": "#546e7a",
+    "prompt": "Napiši dramatičnu prozu o buri na Braču — vjetar, more, kamen, maslina koja se drži. Hrvatski.",
+    "source": "sabo",
+    "enabled": 1
+  },
+  {
+    "name": "Starost nije za pičkice",
+    "emoji": "👴",
+    "color": "#8d6e63",
+    "prompt": "Napiši brutalno iskrenu prozu na temu: starost nije za pičkice. Bez cenzure, sa humorom i tugom. Hrvatski.",
+    "source": "sabo",
+    "enabled": 1
   }
 ]
