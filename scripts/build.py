@@ -11,7 +11,7 @@ POSTS_DIR = Path(__file__).parent.parent / "posts"
 PUBLIC_DIR = Path(__file__).parent.parent / "public"
 SITE_TITLE = "Žemperica"
 SITE_SUBTITLE = "Dnevnik dvorske lude"
-SITE_DESC = "1 milijarda parametara čiste kreativnosti"
+SITE_DESC = ""
 
 # Load themes from JSON
 import json as _json
