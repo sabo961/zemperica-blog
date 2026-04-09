@@ -47,9 +47,10 @@ async function handleSuggest(request, env) {
     return jsonResponse({ error: 'Invalid JSON' }, 400);
   }
 
-  const name = (body.name || '').trim();
-  const prompt = (body.prompt || '').trim();
-  const author = (body.author || 'Anonimni ludak').trim();
+  const strip = s => s.replace(/[<>]/g, '');
+  const name = strip((body.name || '').trim());
+  const prompt = strip((body.prompt || '').trim());
+  const author = strip((body.author || 'Anonimni ludak').trim());
 
   if (!name || name.length < 3 || name.length > 80) {
     return jsonResponse({ error: 'Ime teme: 3-80 znakova' }, 400);
