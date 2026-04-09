@@ -38,10 +38,18 @@ export default {
       return handleHit(request, env);
     }
 
-    // GET /hits — current count
-    if (request.method === 'GET' && url.pathname === '/hits') {
-      const count = parseInt(await env.SUGGESTIONS.get('stats:hits') || '0');
-      return jsonResponse({ hits: count });
+    // POST /vote — like/dislike a post
+    if (request.method === 'POST' && url.pathname === '/vote') {
+      return handleVote(request, env);
+    }
+
+    // GET /votes?slug=xxx — get votes for a post
+    if (request.method === 'GET' && url.pathname === '/votes') {
+      const slug = url.searchParams.get('slug');
+      if (!slug) return jsonResponse({ error: 'Missing slug' }, 400);
+      const likes = parseInt(await env.SUGGESTIONS.get(`votes:${slug}:likes`) || '0');
+      const dislikes = parseInt(await env.SUGGESTIONS.get(`votes:${slug}:dislikes`) || '0');
+      return jsonResponse({ slug, likes, dislikes });
     }
 
     return new Response('🃏 Žemperica API', {
@@ -121,6 +129,50 @@ async function handleThemes(env) {
   // Return count of pending suggestions (public info only)
   const index = JSON.parse(await env.SUGGESTIONS.get('index:pending') || '[]');
   return jsonResponse({ pendingSuggestions: index.length });
+}
+
+async function handleVote(request, env) {
+  let body;
+  try { body = await request.json(); } catch { return jsonResponse({ error: 'Invalid JSON' }, 400); }
+
+  const slug = (body.slug || '').trim();
+  const type = body.type; // 'like' or 'dislike'
+  if (!slug || (type !== 'like' && type !== 'dislike')) {
+    return jsonResponse({ error: 'Need slug and type (like/dislike)' }, 400);
+  }
+
+  // One vote per IP per post
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+  const voteKey = `voted:${slug}:${ip}`;
+  const prev = await env.SUGGESTIONS.get(voteKey);
+
+  if (prev) {
+    // Already voted — if same type, ignore; if different, switch
+    if (prev === type) {
+      const likes = parseInt(await env.SUGGESTIONS.get(`votes:${slug}:likes`) || '0');
+      const dislikes = parseInt(await env.SUGGESTIONS.get(`votes:${slug}:dislikes`) || '0');
+      return jsonResponse({ slug, likes, dislikes, voted: type });
+    }
+    // Switch vote
+    const oldKey = `votes:${slug}:${prev}s`;
+    const newKey = `votes:${slug}:${type}s`;
+    const oldCount = Math.max(0, parseInt(await env.SUGGESTIONS.get(oldKey) || '0') - 1);
+    const newCount = parseInt(await env.SUGGESTIONS.get(newKey) || '0') + 1;
+    await env.SUGGESTIONS.put(oldKey, String(oldCount));
+    await env.SUGGESTIONS.put(newKey, String(newCount));
+    await env.SUGGESTIONS.put(voteKey, type);
+    return jsonResponse({ slug, likes: type === 'like' ? newCount : oldCount, dislikes: type === 'dislike' ? newCount : oldCount, voted: type });
+  }
+
+  // New vote
+  const key = `votes:${slug}:${type}s`;
+  const count = parseInt(await env.SUGGESTIONS.get(key) || '0') + 1;
+  await env.SUGGESTIONS.put(key, String(count));
+  await env.SUGGESTIONS.put(voteKey, type);
+
+  const likes = parseInt(await env.SUGGESTIONS.get(`votes:${slug}:likes`) || '0');
+  const dislikes = parseInt(await env.SUGGESTIONS.get(`votes:${slug}:dislikes`) || '0');
+  return jsonResponse({ slug, likes, dislikes, voted: type });
 }
 
 async function handleHit(request, env) {

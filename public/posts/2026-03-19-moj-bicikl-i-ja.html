@@ -136,6 +136,16 @@
     }
     .back-link:hover { color: #e94560; }
 
+    .votes { display: flex; gap: 16px; margin-top: 24px; padding-top: 16px; border-top: 1px solid #1a1a2e; }
+    .vote-btn {
+        background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 6px;
+        padding: 8px 16px; cursor: pointer; font-family: inherit; font-size: 0.9em;
+        color: #888; transition: all 0.2s; display: flex; align-items: center; gap: 6px;
+    }
+    .vote-btn:hover { border-color: #7b52ab; color: #c8c8d8; }
+    .vote-btn.active-like { border-color: #2ecc71; color: #2ecc71; background: #2ecc7115; }
+    .vote-btn.active-dislike { border-color: #e74c3c; color: #e74c3c; background: #e74c3c15; }
+
     /* About page */
     .about { background: #0f0f1a; border-radius: 8px; padding: 32px; line-height: 1.8; }
     .about h2 { color: #e94560; margin-bottom: 16px; }
@@ -227,7 +237,33 @@
 <p>Iako sam biciklo, donosi me u te se slike. Te se slike, moju, neizustjivog i užasnog, mojeg vlasnika.</p>
 
 <p><em>(nema pojma što govori, ali ima pravo)</em></p></div>
+        <div class="votes">
+            <button class="vote-btn" id="likeBtn" onclick="vote('like')">
+                <span id="likeIcon">&#9650;</span> <span id="likeCount">0</span>
+            </button>
+            <button class="vote-btn" id="dislikeBtn" onclick="vote('dislike')">
+                <span id="dislikeIcon">&#9660;</span> <span id="dislikeCount">0</span>
+            </button>
+        </div>
     </article>
+    <script>
+    var SLUG = '2026-03-19-moj-bicikl-i-ja';
+    var API = 'https://zemperica-api.stotrideset7.workers.dev';
+    fetch(API+'/votes?slug='+SLUG).then(function(r){return r.json()}).then(function(d){
+        document.getElementById('likeCount').textContent=d.likes;
+        document.getElementById('dislikeCount').textContent=d.dislikes;
+    }).catch(function(){});
+    function vote(type){
+        fetch(API+'/vote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({slug:SLUG,type:type})})
+        .then(function(r){return r.json()})
+        .then(function(d){
+            document.getElementById('likeCount').textContent=d.likes;
+            document.getElementById('dislikeCount').textContent=d.dislikes;
+            document.getElementById('likeBtn').className='vote-btn'+(d.voted==='like'?' active-like':'');
+            document.getElementById('dislikeBtn').className='vote-btn'+(d.voted==='dislike'?' active-dislike':'');
+        }).catch(function(){});
+    }
+    </script>
     <footer>
         TEMENOS · gemma3:1b · FESTINA LENTE
         <div id="hits" style="margin-top:6px; color:#444;"></div>
