@@ -152,6 +152,29 @@
         border-top: 1px solid #1a1a2e; color: #333;
         font-size: 0.75em; letter-spacing: 1px;
     }
+
+    /* Suggest form */
+    .suggest-form { background: #0f0f1a; border-radius: 8px; padding: 32px; }
+    .suggest-form h2 { color: #e94560; margin-bottom: 8px; }
+    .suggest-form .intro { color: #888; margin-bottom: 24px; line-height: 1.6; }
+    .suggest-form label { display: block; color: #a0a0b8; font-size: 0.85em; margin-bottom: 4px; letter-spacing: 1px; }
+    .suggest-form input, .suggest-form textarea {
+        width: 100%; background: #1a1a2e; border: 1px solid #2a2a3e; color: #c8c8d8;
+        border-radius: 6px; padding: 10px 14px; font-family: inherit; font-size: 0.9em;
+        margin-bottom: 16px; outline: none; transition: border-color 0.2s;
+    }
+    .suggest-form input:focus, .suggest-form textarea:focus { border-color: #533483; }
+    .suggest-form textarea { min-height: 80px; resize: vertical; }
+    .suggest-form button {
+        background: #533483; color: #e8e8f0; border: none; border-radius: 6px;
+        padding: 12px 28px; font-family: inherit; font-size: 0.9em; cursor: pointer;
+        letter-spacing: 1px; transition: background 0.2s;
+    }
+    .suggest-form button:hover { background: #e94560; }
+    .suggest-form button:disabled { background: #333; cursor: not-allowed; }
+    .suggest-form .msg { margin-top: 16px; padding: 12px; border-radius: 6px; font-size: 0.85em; }
+    .suggest-form .msg.ok { background: #1a3a2a; color: #2ecc71; border: 1px solid #2ecc7144; }
+    .suggest-form .msg.err { background: #3a1a1a; color: #e74c3c; border: 1px solid #e74c3c44; }
     </style>
 </head>
 <body>
@@ -164,6 +187,7 @@
     </header>
     <nav><a href="/index.html">POČETNA</a>
 <a href="/archive.html">ARHIVA</a>
+<a href="/suggest.html">PREDLOŽI TEMU</a>
 <a href="/about.html">O LUDOJ</a>
 </nav>
     

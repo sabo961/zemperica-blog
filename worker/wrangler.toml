@@ -1,0 +1,10 @@
+name = "zemperica-api"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "SUGGESTIONS"
+id = "7b06eef1f6864a22a7550533e92eaa17"
+
+[vars]
+BLOG_ORIGIN = "https://zemperica.jedai.space"

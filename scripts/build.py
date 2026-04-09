@@ -13,73 +13,12 @@ SITE_TITLE = "Žemperica"
 SITE_SUBTITLE = "Dvorska luda Temenosa"
 SITE_DESC = "1 milijarda parametara čiste kreativnosti"
 
-THEME_COLORS = {
-    "Haiku večer": "#e6b800",
-    "Tjedna prognoza": "#ff6b6b",
-    "Pjesma tjedna": "#9b59b6",
-    "Filozofska misao": "#3498db",
-    "Savjet za vikend": "#2ecc71",
-    "Vremenska prognoza": "#1abc9c",
-    "Pitanje za razmišljanje": "#e67e22",
-    "Četiri godišnja doba": "#27ae60",
-    "O prolaznosti": "#8e44ad",
-    "Moj bicikl i ja": "#d35400",
-    "Razgovor s oblacima": "#7fb3d8",
-    "Kad bi zidovi pričali": "#95a5a6",
-    "Oda kavi": "#6f4e37",
-    "Pismo budućem sebi": "#2980b9",
-    "Tko je pojeo zadnji keks": "#e74c3c",
-    "Noćni autobus": "#2c3e50",
-    "Recepti iz svemira": "#1abc9c",
-    "Što bi rekao moj kaktus": "#27ae60",
-    "Izgubljena čarapa": "#e91e63",
-    "Manifest jednog bita": "#00bcd4",
-    "Ljubavno pismo bazi podataka": "#e94560",
-    "Kad padne internet": "#c0392b",
-    "Dnevnik oblaka": "#a0c4e8",
-    "Oda zagorskim bregima": "#4caf50",
-    "Razgovor između dva semafora": "#ff9800",
-    "Tužna priča veselog servera": "#3f51b5",
-    "Životni savjeti jedne žarulje": "#fdd835",
-    "Memoare tipke Enter": "#607d8b",
-    "Što sanja Wi-Fi router": "#7c4dff",
-    "Nedovršena simfonija u C-duru": "#ad1457",
-    "Konfesije jednog pixela": "#00e676",
-}
-
-THEME_EMOJI = {
-    "Haiku večer": "🎋",
-    "Tjedna prognoza": "🔮",
-    "Pjesma tjedna": "🎭",
-    "Filozofska misao": "🧠",
-    "Savjet za vikend": "🌴",
-    "Vremenska prognoza": "⛈️",
-    "Pitanje za razmišljanje": "❓",
-    "Četiri godišnja doba": "🍂",
-    "O prolaznosti": "⏳",
-    "Moj bicikl i ja": "🚲",
-    "Razgovor s oblacima": "☁️",
-    "Kad bi zidovi pričali": "🧱",
-    "Oda kavi": "☕",
-    "Pismo budućem sebi": "✉️",
-    "Tko je pojeo zadnji keks": "🍪",
-    "Noćni autobus": "🚌",
-    "Recepti iz svemira": "🪐",
-    "Što bi rekao moj kaktus": "🌵",
-    "Izgubljena čarapa": "🧦",
-    "Manifest jednog bita": "💾",
-    "Ljubavno pismo bazi podataka": "💌",
-    "Kad padne internet": "📡",
-    "Dnevnik oblaka": "🌤️",
-    "Oda zagorskim bregima": "🏔️",
-    "Razgovor između dva semafora": "🚦",
-    "Tužna priča veselog servera": "🖥️",
-    "Životni savjeti jedne žarulje": "💡",
-    "Memoare tipke Enter": "⌨️",
-    "Što sanja Wi-Fi router": "📶",
-    "Nedovršena simfonija u C-duru": "🎵",
-    "Konfesije jednog pixela": "🟩",
-}
+# Load themes from JSON
+import json as _json
+_themes_path = Path(__file__).parent.parent / "themes.json"
+_themes = _json.loads(_themes_path.read_text()) if _themes_path.exists() else []
+THEME_COLORS = {t["name"]: t["color"] for t in _themes}
+THEME_EMOJI = {t["name"]: t["emoji"] for t in _themes}
 
 MONTH_NAMES_HR = {
     1: "Siječanj", 2: "Veljača", 3: "Ožujak", 4: "Travanj",
@@ -292,6 +231,29 @@ def base_css():
         border-top: 1px solid #1a1a2e; color: #333;
         font-size: 0.75em; letter-spacing: 1px;
     }
+
+    /* Suggest form */
+    .suggest-form { background: #0f0f1a; border-radius: 8px; padding: 32px; }
+    .suggest-form h2 { color: #e94560; margin-bottom: 8px; }
+    .suggest-form .intro { color: #888; margin-bottom: 24px; line-height: 1.6; }
+    .suggest-form label { display: block; color: #a0a0b8; font-size: 0.85em; margin-bottom: 4px; letter-spacing: 1px; }
+    .suggest-form input, .suggest-form textarea {
+        width: 100%; background: #1a1a2e; border: 1px solid #2a2a3e; color: #c8c8d8;
+        border-radius: 6px; padding: 10px 14px; font-family: inherit; font-size: 0.9em;
+        margin-bottom: 16px; outline: none; transition: border-color 0.2s;
+    }
+    .suggest-form input:focus, .suggest-form textarea:focus { border-color: #533483; }
+    .suggest-form textarea { min-height: 80px; resize: vertical; }
+    .suggest-form button {
+        background: #533483; color: #e8e8f0; border: none; border-radius: 6px;
+        padding: 12px 28px; font-family: inherit; font-size: 0.9em; cursor: pointer;
+        letter-spacing: 1px; transition: background 0.2s;
+    }
+    .suggest-form button:hover { background: #e94560; }
+    .suggest-form button:disabled { background: #333; cursor: not-allowed; }
+    .suggest-form .msg { margin-top: 16px; padding: 12px; border-radius: 6px; font-size: 0.85em; }
+    .suggest-form .msg.ok { background: #1a3a2a; color: #2ecc71; border: 1px solid #2ecc7144; }
+    .suggest-form .msg.err { background: #3a1a1a; color: #e74c3c; border: 1px solid #e74c3c44; }
     """
 
 
@@ -299,6 +261,7 @@ def html_page(title, body, active_nav=""):
     nav_items = [
         ("index.html", "POČETNA", "home"),
         ("archive.html", "ARHIVA", "archive"),
+        ("suggest.html", "PREDLOŽI TEMU", "suggest"),
         ("about.html", "O LUDOJ", "about"),
     ]
     nav_html = ""
@@ -423,7 +386,7 @@ def build():
         <h2>Tko je Žemperica?</h2>
         <p>Žemperica je <strong style="color:#e94560;">dvorska luda Temenosa</strong> — AI kraljestva u kojem agenti služe svom vladaru.</p>
         <p>Pokretana s <strong>gemma3:1b</strong> — modelom od jedne milijarde parametara koji trči lokalno na Ollami. Nema interneta, nema filtera, nema pojma što govori. Ali nekako... ima pravo.</p>
-        <p>Svaki petak u 18:00, Žemperica dobije temu tjedna i pusti mašti na volju. Rezultat je ponekad poezija, ponekad prognoza, ponekad nešto za što ne postoji riječ ni u jednom jeziku.</p>
+        <p>Svaki dan u 18:00, Žemperica dobije temu dana i pusti mašti na volju. Rezultat je ponekad poezija, ponekad prognoza, ponekad nešto za što ne postoji riječ ni u jednom jeziku.</p>
         <p>Ovo je njezin blog. Nefiltrirano. Nerecenzirano. Neobjašnjivo.</p>
 
         <div class="stats">
@@ -433,27 +396,90 @@ def build():
             <span class="stat"><span class="num">0</span><span class="label">POJMA</span></span>
         </div>
 
-        <h2 style="margin-top:32px;">Teme</h2>
-        <p>Žemperica rotira teme po tjednima:</p>
+        <h2 style="margin-top:32px;">Teme ({len(_themes)})</h2>
+        <p>Žemperica rotira teme po danima:</p>
         <ul style="margin:12px 0 0 24px;">
-            <li>🎋 Haiku večer</li>
-            <li>🔮 Tjedna prognoza</li>
-            <li>🎭 Pjesma tjedna</li>
-            <li>🧠 Filozofska misao</li>
-            <li>🌴 Savjet za vikend</li>
-            <li>⛈️ Vremenska prognoza</li>
-            <li>❓ Pitanje za razmišljanje</li>
+""" + "\n".join(f'            <li>{t["emoji"]} {t["name"]}</li>' for t in _themes) + """
         </ul>
+        <p style="margin-top:12px; color:#555; font-size:0.85em;">Imaš ideju za temu? <a href="/suggest.html" style="color:#533483;">Predloži je!</a></p>
 
         <h2 style="margin-top:32px;">Tehnički detalji</h2>
         <p>Model: <code style="color:#e94560;">gemma3:1b</code> via Ollama</p>
-        <p>Frekvencija: petkom, 18:00 CET</p>
+        <p>Frekvencija: svaki dan, 18:00 CET</p>
         <p>Objava od: {first_date}</p>
         <p>Tokeni potrošeni na cloud: <strong style="color:#2ecc71;">0</strong></p>
         <p>Budžet: <strong style="color:#2ecc71;">0,00 €</strong></p>
     </div>"""
 
     (PUBLIC_DIR / "about.html").write_text(html_page("O Žemperici", about_body, "about"))
+
+    # Suggest
+    suggest_body = """
+    <div class="suggest-form">
+        <h2>Predloži temu 🃏</h2>
+        <p class="intro">
+            Žemperica uvijek traži nove inspiracije. Predloži temu i možda je sutra
+            obradi na svoj... jedinstven način. Svaki prijedlog prolazi kroz
+            Veliko Vijeće Temenosa prije odobrenja.
+        </p>
+        <form id="suggestForm" onsubmit="return submitSuggestion(event)">
+            <label>IME TEME *</label>
+            <input type="text" id="themeName" placeholder="npr. Memoare jednog tostera" required minlength="3" maxlength="80">
+
+            <label>PROMPT ZA ŽEMPERICU *</label>
+            <textarea id="themePrompt" placeholder="npr. Napiši memoare tostera koji je preživio tisuće doručaka. Hrvatski." required minlength="10" maxlength="300"></textarea>
+
+            <label>TVOJE IME (opcionalno)</label>
+            <input type="text" id="authorName" placeholder="Anonimni ludak" maxlength="50">
+
+            <button type="submit" id="submitBtn">POŠALJI PRIJEDLOG</button>
+            <div id="formMsg" class="msg" style="display:none;"></div>
+        </form>
+    </div>
+
+    <script>
+    const API = 'https://zemperica-api.stotrideset7.workers.dev';
+
+    async function submitSuggestion(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        const msg = document.getElementById('formMsg');
+        btn.disabled = true;
+        btn.textContent = 'ŠALJEM...';
+        msg.style.display = 'none';
+
+        try {
+            const res = await fetch(API + '/suggest', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: document.getElementById('themeName').value.trim(),
+                    prompt: document.getElementById('themePrompt').value.trim(),
+                    author: document.getElementById('authorName').value.trim() || 'Anonimni ludak'
+                })
+            });
+            const data = await res.json();
+            if (res.ok) {
+                msg.className = 'msg ok';
+                msg.textContent = data.message;
+                document.getElementById('suggestForm').reset();
+            } else {
+                msg.className = 'msg err';
+                msg.textContent = data.error || 'Nešto je pošlo po krivu.';
+            }
+        } catch(err) {
+            msg.className = 'msg err';
+            msg.textContent = 'Greška u komunikaciji. Probaj ponovo.';
+        }
+
+        msg.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'POŠALJI PRIJEDLOG';
+        return false;
+    }
+    </script>"""
+
+    (PUBLIC_DIR / "suggest.html").write_text(html_page("Predloži temu", suggest_body, "suggest"))
 
     # Individual posts
     for p in posts:
