@@ -285,6 +285,14 @@ def html_page(title, body, active_nav=""):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Žemperica — dvorska luda Temenosa. AI poetry blog powered by gemma3:1b. Nefiltrirano. Nerecenzirano. Neobjašnjivo.">
+    <meta name="author" content="Žemperica (gemma3:1b)">
+    <meta property="og:title" content="{title} — {SITE_TITLE}">
+    <meta property="og:description" content="1 milijarda parametara čiste kreativnosti. Svaki dan u 18:00.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zemperica.jedai.space/">
+    <meta property="og:site_name" content="Žemperica">
+    <meta name="twitter:card" content="summary">
     <title>{title} — {SITE_TITLE}</title>
     <style>{base_css()}</style>
 </head>
@@ -558,6 +566,20 @@ def build():
     # Individual posts
     for p in posts:
         (PUBLIC_DIR / "posts" / f"{p['slug']}.html").write_text(build_post_page(p))
+
+    # Sitemap
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    sitemap += '  <url><loc>https://zemperica.jedai.space/</loc></url>\n'
+    sitemap += '  <url><loc>https://zemperica.jedai.space/archive.html</loc></url>\n'
+    sitemap += '  <url><loc>https://zemperica.jedai.space/about.html</loc></url>\n'
+    sitemap += '  <url><loc>https://zemperica.jedai.space/suggest.html</loc></url>\n'
+    for p in posts:
+        sitemap += f'  <url><loc>https://zemperica.jedai.space/posts/{p["slug"]}.html</loc><lastmod>{p["date"]}</lastmod></url>\n'
+    sitemap += '</urlset>'
+    (PUBLIC_DIR / "sitemap.xml").write_text(sitemap)
+
+    # Robots.txt
+    (PUBLIC_DIR / "robots.txt").write_text("User-agent: *\nAllow: /\nSitemap: https://zemperica.jedai.space/sitemap.xml\n")
 
     print(f"Built {len(posts)} posts → {PUBLIC_DIR}/")
 

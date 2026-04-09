@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zemperica.jedai.space/sitemap.xml
