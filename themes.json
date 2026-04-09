@@ -262,5 +262,13 @@
     "prompt": "Napiši nježnu kratku priču o majci krtici i njezinim mladima koji prvi put izlaze iz rupe na svijetlo dana. Hrvatski.",
     "source": "sabo",
     "enabled": 1
+  },
+  {
+    "name": "Tihi svjedok",
+    "emoji": "👁️",
+    "color": "#78909c",
+    "prompt": "Napiši kratku prozu iz perspektive nekog predmeta koji tiho promatra ljude oko sebe — može biti klupa u parku, sat na zidu, ili nešto drugo. Ti odluči. Hrvatski.",
+    "source": "sabo",
+    "enabled": 1
   }
 ]
