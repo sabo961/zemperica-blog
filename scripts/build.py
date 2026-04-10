@@ -355,13 +355,44 @@ def html_page(title, body, active_nav=""):
     <script>
     (function(){{
       var s=document.getElementById('postSearch');
-      if(!s) return;
-      s.addEventListener('input',function(){{
-        var q=s.value.toLowerCase();
+      var activeTheme=null;
+      function applyFilters(){{
+        var q=(s&&s.value||'').toLowerCase();
         var cards=document.querySelectorAll('.post-card');
         var months=document.querySelectorAll('.month-header');
-        cards.forEach(function(c){{c.style.display=c.textContent.toLowerCase().indexOf(q)>=0?'':'none'}});
-        months.forEach(function(m){{m.style.display=q?'none':''}});
+        cards.forEach(function(c){{
+          var matchText=!q||c.textContent.toLowerCase().indexOf(q)>=0;
+          var matchTheme=!activeTheme||c.getAttribute('data-theme')===activeTheme;
+          c.style.display=(matchText&&matchTheme)?'':'none';
+        }});
+        months.forEach(function(m){{m.style.display=(q||activeTheme)?'none':''}});
+      }}
+      if(s) s.addEventListener('input',applyFilters);
+      document.addEventListener('click',function(e){{
+        var btn=e.target.closest('.theme-filter');
+        if(!btn) return;
+        e.preventDefault();
+        var theme=btn.getAttribute('data-theme');
+        var bar=document.getElementById('activeFilter');
+        if(activeTheme===theme){{
+          activeTheme=null;
+          if(bar) bar.style.display='none';
+        }}else{{
+          activeTheme=theme;
+          if(!bar){{
+            bar=document.createElement('div');
+            bar.id='activeFilter';
+            bar.style.cssText='text-align:center;margin-bottom:16px;font-size:0.85em;color:#a78bda;';
+            var container=document.querySelector('.search-box');
+            if(container) container.after(bar);
+          }}
+          bar.innerHTML='Filtar: <strong style="color:#e94560;">'+theme+'</strong> <a href="#" id="clearFilter" style="color:#888;margin-left:8px;text-decoration:none;">✕</a>';
+          bar.style.display='block';
+          document.getElementById('clearFilter').addEventListener('click',function(ev){{
+            ev.preventDefault();activeTheme=null;bar.style.display='none';applyFilters();
+          }});
+        }}
+        applyFilters();
       }});
     }})();
     </script>
@@ -387,10 +418,10 @@ def post_card(post):
     date_str = post['date_obj'].strftime('%d.%m.%Y.')
     preview = post['body'][:150].replace('\n', ' ').replace('**', '')
 
-    return f"""<div class="post-card">
+    return f"""<div class="post-card" data-theme="{theme}">
     <div class="meta">
         <span class="date">{date_str}</span>
-        <span class="theme-badge" style="background:{color}22; color:{color}; border:1px solid {color}44;">{emoji} {theme}</span>
+        <a href="#" class="theme-badge theme-filter" data-theme="{theme}" style="background:{color}22; color:{color}; border:1px solid {color}44; text-decoration:none; cursor:pointer;">{emoji} {theme}</a>
     </div>
     <h2><a href="/posts/{post['slug']}.html">{post['title']}</a></h2>
     <div class="preview">{preview}...</div>
