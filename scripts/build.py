@@ -451,7 +451,8 @@ def build_post_page(post, prev_post=None, next_post=None):
 
     body = f"""
     <a href="/index.html" class="back-link">← natrag</a>
-    <article>
+    <article style="position:relative;">
+        <button id="copyBtn" onclick="copyPost()" title="Kopiraj tekst" style="position:absolute;top:16px;right:16px;background:none;border:1px solid #2a2a3e;border-radius:6px;padding:6px 8px;cursor:pointer;color:#888;font-size:1em;transition:all 0.2s;" onmouseover="this.style.borderColor='#a78bda';this.style.color='#c8c8d8'" onmouseout="this.style.borderColor='#2a2a3e';this.style.color='#888'">&#128203;</button>
         <div class="post-meta">
             {date_str}{suggested_post_html}
             <span class="theme-badge" style="background:{color}22; color:{color}; border:1px solid {color}44; padding:2px 10px; border-radius:12px; font-size:0.85em;">{emoji} {theme}</span>
@@ -473,6 +474,14 @@ def build_post_page(post, prev_post=None, next_post=None):
         </div>
     </article>
     <script>
+    function copyPost(){{
+      var text=document.querySelector('.content').innerText;
+      navigator.clipboard.writeText(text).then(function(){{
+        var btn=document.getElementById('copyBtn');
+        btn.textContent='\\u2713';
+        setTimeout(function(){{btn.innerHTML='\\ud83d\\udccb'}},1500);
+      }});
+    }}
     var SLUG = '{post["slug"]}';
     var API = 'https://zemperica-api.stotrideset7.workers.dev';
     fetch(API+'/votes?slug='+SLUG).then(function(r){{return r.json()}}).then(function(d){{
