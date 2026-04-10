@@ -115,7 +115,11 @@ async function handleSuggest(request, env) {
 
   // Notify via Telegram (fire-and-forget)
   if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
-    const text = `🃏 NOVI PRIJEDLOG ZA ŽEMPERICU\n\nTema: ${name}\nPrompt: ${prompt}\nAutor: ${author}`;
+    const text = `🃏 NOVI PRIJEDLOG ZA ŽEMPERICU
+
+Tema: ${name}
+Prompt: ${prompt}
+Autor: ${author}`;
     fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
