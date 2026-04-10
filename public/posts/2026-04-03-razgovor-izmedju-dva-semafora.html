@@ -441,7 +441,7 @@
     </script>
     <footer>
         <a href="#" style="color:#a78bda; text-decoration:none; display:block; margin-bottom:8px;">↑ Povratak na vrh</a>
-        TEMENOS · gemma3:1b · FESTINA LENTE
+        <span id="temenosLabel" style="cursor:default;">TEMENOS</span> · gemma3:1b · FESTINA LENTE
         <div style="margin-top:6px;"><a href="mailto:bartol.kolar@gmail.com" style="color:#555; text-decoration:none;">bartol.kolar@gmail.com</a></div>
         <div id="hits" style="margin-top:6px; color:#444;"></div>
     </footer>
@@ -450,6 +450,26 @@
       .then(function(r){return r.json()})
       .then(function(d){document.getElementById('hits').textContent=d.visitors+' posjetitelja · '+d.views+' pregleda'})
       .catch(function(){});
+    // Admin mode — triple-click TEMENOS
+    (function(){
+      var clicks=0,timer;
+      var el=document.getElementById('temenosLabel');
+      if(!el) return;
+      el.addEventListener('click',function(){
+        clicks++;
+        clearTimeout(timer);
+        timer=setTimeout(function(){clicks=0},600);
+        if(clicks===3){
+          clicks=0;
+          var key=prompt('🃏');
+          if(key){
+            window._adminKey=key;
+            el.style.color='#e94560';
+            el.title='Admin mode';
+          }
+        }
+      });
+    })();
     </script>
 </div>
 </body>

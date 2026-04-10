@@ -81,12 +81,15 @@ async function handleSuggest(request, env) {
     return jsonResponse({ error: 'Autor: max 50 znakova' }, 400);
   }
 
+  // Admin bypass
+  const isAdmin = body.adminKey === (env.ADMIN_KEY || '');
+
   // Rate limit: max 3 suggestions per IP per day
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
   const rateKey = `rate:${ip}:${new Date().toISOString().slice(0, 10)}`;
   const rateCount = parseInt(await env.SUGGESTIONS.get(rateKey) || '0');
 
-  if (rateCount >= 3) {
+  if (!isAdmin && rateCount >= 3) {
     return jsonResponse({ error: 'Previše prijedloga danas. Dođi sutra!' }, 429);
   }
 
