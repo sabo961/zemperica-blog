@@ -206,5 +206,13 @@
     "prompt": "Bezrazložna i pretjerana hvala bez ironije i dostojanstva. Hrvatski.",
     "source": "vedran",
     "enabled": 1
+  },
+  {
+    "name": "Gastronozofija",
+    "emoji": "🍷",
+    "color": "#8d6e63",
+    "prompt": "Recepti pisani u stilu djela klasičnih filozofa. Odabir recepta i stil u kojem je pisan treba odražavati filozofiju autora. Hrvatski.",
+    "source": "vedran",
+    "enabled": 1
   }
 ]

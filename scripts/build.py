@@ -318,6 +318,7 @@ def html_page(title, body, active_nav=""):
         ("index.html", "POČETNA", "home"),
         ("archive.html", "ARHIVA", "archive"),
         ("suggest.html", "PREDLOŽI TEMU", "suggest"),
+        ("proposals.html", "PRIJEDLOZI", "proposals"),
         ("about.html", "O ŽEMPERICI", "about"),
         ("about-me.html", "O MENI", "aboutme"),
     ]
@@ -660,6 +661,41 @@ def build():
     </div>"""
 
     (PUBLIC_DIR / "about-me.html").write_text(html_page("O meni", aboutme_body, "aboutme"))
+
+    # Proposals — dynamic page fetching from API
+    proposals_body = """
+    <div class="about">
+        <h2>Prijedlozi tema 🃏</h2>
+        <p style="color:#888; margin-bottom:24px;">Što su posjetitelji predložili? Žemperica čita, razmišlja, i možda jednog dana napiše.</p>
+        <div id="proposalsList" style="color:#555;">Učitavam...</div>
+    </div>
+    <script>
+    fetch('https://zemperica-api.stotrideset7.workers.dev/suggestions')
+      .then(function(r){return r.json()})
+      .then(function(d){
+        var el=document.getElementById('proposalsList');
+        if(!d.suggestions||d.suggestions.length===0){
+          el.innerHTML='<p>Nema prijedloga. <a href="/suggest.html" style="color:#a78bda;">Budi prvi!</a></p>';
+          return;
+        }
+        var html='';
+        d.suggestions.slice().reverse().forEach(function(s){
+          var dt=new Date(s.createdAt);
+          var date=dt.toLocaleDateString('hr-HR',{day:'numeric',month:'numeric',year:'numeric'});
+          var time=dt.toLocaleTimeString('hr-HR',{hour:'2-digit',minute:'2-digit'});
+          html+='<div class="post-card" style="margin-bottom:16px;">';
+          html+='<div class="meta"><span class="date">'+date+' · '+time+'</span>';
+          html+='<span style="color:#a78bda;font-size:0.8em;">'+s.author+'</span></div>';
+          html+='<h2 style="color:#e8e8f0;font-size:1.1em;margin-bottom:6px;">'+s.name+'</h2>';
+          html+='<div class="preview" style="color:#888;font-size:0.85em;">'+s.prompt+'</div>';
+          html+='</div>';
+        });
+        el.innerHTML=html;
+      })
+      .catch(function(){document.getElementById('proposalsList').textContent='Greška pri učitavanju.'});
+    </script>"""
+
+    (PUBLIC_DIR / "proposals.html").write_text(html_page("Prijedlozi", proposals_body, "proposals"))
 
     # Individual posts (with prev/next navigation)
     for i, p in enumerate(posts):
