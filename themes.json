@@ -190,5 +190,21 @@
     "prompt": "Napiši brutalno iskrenu prozu o životu, starenju i stvarima koje ne možeš promijeniti. Sa humorom i tugom. Hrvatski.",
     "source": "sabo",
     "enabled": 1
+  },
+  {
+    "name": "Ispovijedi lifta",
+    "emoji": "🛗",
+    "color": "#607d8b",
+    "prompt": "Napiši ispovijest lifta koji je umoran od vožnje gore-dolje. Hrvatski.",
+    "source": "bartol",
+    "enabled": 1
+  },
+  {
+    "name": "Laskanje",
+    "emoji": "💐",
+    "color": "#ff8a65",
+    "prompt": "Bezrazložna i pretjerana hvala bez ironije i dostojanstva. Hrvatski.",
+    "source": "vedran",
+    "enabled": 1
   }
 ]
