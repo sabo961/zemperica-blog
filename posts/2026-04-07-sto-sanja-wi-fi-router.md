@@ -1,7 +1,7 @@
 ---
 title: Što sanja Wi-Fi router
 date: 2026-04-07
-theme: Što sanja Wi-Fi router
+theme: Snovi
 prompt: Opiši san jednog Wi-Fi routera — na što sanja kad svi odu spavati? Hrvatski.
 ---
 

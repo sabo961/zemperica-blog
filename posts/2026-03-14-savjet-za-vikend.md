@@ -1,7 +1,7 @@
 ---
 title: Savjet za vikend
 date: 2026-03-14
-theme: Savjet za vikend
+theme: Rituali
 prompt: Daj savjet programeru za večeras — nešto kreativno, ne o kodu. Hrvatski.
 ---
 

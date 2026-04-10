@@ -1,7 +1,7 @@
 ---
 title: Pjesma tjedna
 date: 2026-03-12
-theme: Pjesma tjedna
+theme: Stihovi
 prompt: Napiši kratku pjesmu (4-8 stihova) o umjetnoj inteligenciji. Hrvatski.
 ---
 

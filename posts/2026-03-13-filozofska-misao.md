@@ -1,7 +1,7 @@
 ---
 title: Filozofska misao
 date: 2026-03-13
-theme: Filozofska misao
+theme: Mudrost
 prompt: Podijeli jednu duboku filozofsku misao o tehnologiji i čovječanstvu. Hrvatski.
 ---
 

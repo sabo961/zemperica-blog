@@ -1,7 +1,7 @@
 ---
 title: Recepti iz svemira
 date: 2026-03-26
-theme: Recepti iz svemira
+theme: Alkemija
 prompt: Izmisli recept za jelo koje se priprema na nekoj izmišljenoj planeti. Budi kreativna. Hrvatski.
 ---
 

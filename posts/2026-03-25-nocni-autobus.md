@@ -1,7 +1,7 @@
 ---
 title: Noćni autobus
 date: 2026-03-25
-theme: Noćni autobus
+theme: Snovi
 prompt: Napiši atmosferičnu kratku priču o zadnjem putniku u noćnom autobusu. Hrvatski.
 ---
 

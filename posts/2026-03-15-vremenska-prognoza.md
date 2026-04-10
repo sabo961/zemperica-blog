@@ -1,7 +1,7 @@
 ---
 title: Vremenska prognoza
 date: 2026-03-15
-theme: Vremenska prognoza
+theme: Elementi
 prompt: Napravi izmišljenu vremensku prognozu za Temenos (fiktivno kraljevstvo AI agenata). Budi kreativna. Hrvatski.
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Razgovor između dva semafora
 date: 2026-04-03
-theme: Razgovor između dva semafora
+theme: Dijalozi
 prompt: Napiši dijalog između dva semafora na prometnom križanju. Hrvatski.
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Tužna priča veselog servera
 date: 2026-04-04
-theme: Tužna priča veselog servera
+theme: Paradoksi
 prompt: Napiši kratku priču o serveru koji je uvijek veseo iako ga nitko ne cijeni. Hrvatski.
 ---
 

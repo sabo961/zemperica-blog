@@ -1,7 +1,7 @@
 ---
 title: Razgovor s oblacima
 date: 2026-03-20
-theme: Razgovor s oblacima
+theme: Dijalozi
 prompt: Napiši dijalog između dva oblaka koji lete iznad Zagreba. Hrvatski.
 ---
 

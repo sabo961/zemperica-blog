@@ -1,7 +1,7 @@
 ---
 title: Moj bicikl i ja
 date: 2026-03-19
-theme: Moj bicikl i ja
+theme: Putovanja
 prompt: Napiši kratku priču iz perspektive bicikla koji razmišlja o svom vlasniku. Hrvatski.
 ---
 

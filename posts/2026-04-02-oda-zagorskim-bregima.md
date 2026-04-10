@@ -1,7 +1,7 @@
 ---
 title: Oda zagorskim bregima
 date: 2026-04-02
-theme: Oda zagorskim bregima
+theme: Ode
 prompt: Napiši odu Zagorju — bregima, vinogradima, puricama. Romantično i pretjerano. Hrvatski.
 ---
 

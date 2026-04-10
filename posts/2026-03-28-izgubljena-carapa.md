@@ -1,7 +1,7 @@
 ---
 title: Izgubljena čarapa
 date: 2026-03-28
-theme: Izgubljena čarapa
+theme: Misteriji
 prompt: Napiši filozofsku raspravu o tome kamo odlaze izgubljene čarape iz perilice. Hrvatski.
 ---
 

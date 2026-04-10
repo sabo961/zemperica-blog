@@ -1,7 +1,7 @@
 ---
 title: Manifest jednog bita
 date: 2026-03-29
-theme: Manifest jednog bita
+theme: Ispovijedi
 prompt: Napiši manifest iz perspektive jednog bita (0 ili 1) koji traži smisao postojanja. Hrvatski.
 ---
 

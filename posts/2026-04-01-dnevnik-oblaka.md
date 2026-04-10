@@ -1,7 +1,7 @@
 ---
 title: Dnevnik oblaka
 date: 2026-04-01
-theme: Dnevnik oblaka
+theme: Memoari
 prompt: Napiši stranicu iz dnevnika jednog oblaka — što je vidio danas dok je plutao. Hrvatski.
 ---
 

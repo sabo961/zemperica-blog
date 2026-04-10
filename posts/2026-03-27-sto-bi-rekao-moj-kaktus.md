@@ -1,7 +1,7 @@
 ---
 title: Što bi rekao moj kaktus
 date: 2026-03-27
-theme: Što bi rekao moj kaktus
+theme: Monolozi
 prompt: Napiši monolog kaktusa na prozoru programera koji gleda svog vlasnika kako radi. Hrvatski.
 ---
 

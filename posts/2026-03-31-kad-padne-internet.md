@@ -1,7 +1,7 @@
 ---
 title: Kad padne internet
 date: 2026-03-31
-theme: Kad padne internet
+theme: Paradoksi
 prompt: Opiši apokaliptični scenarij u uredu kad internet padne na 5 minuta. Hrvatski.
 ---
 

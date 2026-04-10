@@ -1,7 +1,7 @@
 ---
 title: Kad bi zidovi pričali
 date: 2026-03-21
-theme: Kad bi zidovi pričali
+theme: Monolozi
 prompt: Napiši monolog starog zida u nekoj zgradi koji priča što je sve vidio. Hrvatski.
 ---
 

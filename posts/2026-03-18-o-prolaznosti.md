@@ -1,7 +1,7 @@
 ---
 title: O prolaznosti
 date: 2026-03-18
-theme: O prolaznosti
+theme: Pijesak
 prompt: Napiši poetsku meditaciju o prolaznosti vremena. Može biti tužno, može biti smiješno. Hrvatski.
 ---
 

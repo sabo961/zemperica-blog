@@ -1,7 +1,7 @@
 ---
 title: Tko je pojeo zadnji keks
 date: 2026-03-24
-theme: Tko je pojeo zadnji keks
+theme: Misteriji
 prompt: Napiši kratku kriminalističku priču o nestanku zadnjeg keksa iz ureda. Hrvatski.
 ---
 

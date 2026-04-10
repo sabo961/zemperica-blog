@@ -1,7 +1,7 @@
 ---
 title: Memoare tipke Enter
 date: 2026-04-06
-theme: Memoare tipke Enter
+theme: Memoari
 prompt: Napiši memoare tipke Enter — koliko je toga pokrenula, koliko odluka potvrdila. Hrvatski.
 ---
 

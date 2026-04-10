@@ -1,7 +1,7 @@
 ---
 title: Haiku večer
 date: 2026-03-10
-theme: Haiku večer
+theme: Haiku
 prompt: Napiši haiku o programiranju na hrvatskom jeziku.
 ---
 

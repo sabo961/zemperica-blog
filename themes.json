@@ -1,6 +1,6 @@
 [
   {
-    "name": "Haiku večer",
+    "name": "Haiku",
     "emoji": "🎋",
     "color": "#e6b800",
     "prompt": "Napiši haiku o programiranju na hrvatskom jeziku.",
@@ -8,7 +8,7 @@
     "enabled": 1
   },
   {
-    "name": "Tjedna prognoza",
+    "name": "Proročanstva",
     "emoji": "🔮",
     "color": "#ff6b6b",
     "prompt": "Daj dnevnu prognozu za programere. Budi kreativna i smiješna. Hrvatski.",
@@ -16,7 +16,7 @@
     "enabled": 1
   },
   {
-    "name": "Pjesma tjedna",
+    "name": "Stihovi",
     "emoji": "🎭",
     "color": "#9b59b6",
     "prompt": "Napiši kratku pjesmu (4-8 stihova) o umjetnoj inteligenciji. Hrvatski.",
@@ -24,7 +24,7 @@
     "enabled": 1
   },
   {
-    "name": "Filozofska misao",
+    "name": "Mudrost",
     "emoji": "🧠",
     "color": "#3498db",
     "prompt": "Podijeli jednu duboku filozofsku misao o tehnologiji i čovječanstvu. Hrvatski.",
@@ -32,39 +32,31 @@
     "enabled": 1
   },
   {
-    "name": "Savjet za vikend",
-    "emoji": "🌴",
+    "name": "Rituali",
+    "emoji": "☕",
     "color": "#2ecc71",
     "prompt": "Daj savjet programeru za večeras — nešto kreativno, ne o kodu. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
   {
-    "name": "Vremenska prognoza",
-    "emoji": "⛈️",
+    "name": "Elementi",
+    "emoji": "🌊",
     "color": "#1abc9c",
     "prompt": "Napravi izmišljenu vremensku prognozu za Temenos (fiktivno kraljevstvo AI agenata). Budi kreativna. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
   {
-    "name": "Pitanje za razmišljanje",
-    "emoji": "❓",
+    "name": "Labirint",
+    "emoji": "🌀",
     "color": "#e67e22",
     "prompt": "Postavi jedno zanimljivo filozofsko pitanje o odnosu čovjeka i AI-a. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
   {
-    "name": "Četiri godišnja doba",
-    "emoji": "🍂",
-    "color": "#27ae60",
-    "prompt": "Napiši kratku prozu o trenutnom godišnjem dobu iz perspektive jednog stabla. Hrvatski.",
-    "source": "built-in",
-    "enabled": 1
-  },
-  {
-    "name": "O prolaznosti",
+    "name": "Pijesak",
     "emoji": "⏳",
     "color": "#8e44ad",
     "prompt": "Napiši poetsku meditaciju o prolaznosti vremena. Može biti tužno, može biti smiješno. Hrvatski.",
@@ -72,7 +64,7 @@
     "enabled": 1
   },
   {
-    "name": "Moj bicikl i ja",
+    "name": "Putovanja",
     "emoji": "🚲",
     "color": "#d35400",
     "prompt": "Napiši kratku priču iz perspektive bicikla koji razmišlja o svom vlasniku. Hrvatski.",
@@ -80,31 +72,31 @@
     "enabled": 1
   },
   {
-    "name": "Razgovor s oblacima",
-    "emoji": "☁️",
+    "name": "Dijalozi",
+    "emoji": "💬",
     "color": "#7fb3d8",
     "prompt": "Napiši dijalog između dva oblaka koji lete iznad Zagreba. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
   {
-    "name": "Kad bi zidovi pričali",
-    "emoji": "🧱",
+    "name": "Monolozi",
+    "emoji": "🎙️",
     "color": "#95a5a6",
     "prompt": "Napiši monolog starog zida u nekoj zgradi koji priča što je sve vidio. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
   {
-    "name": "Oda kavi",
-    "emoji": "☕",
+    "name": "Ode",
+    "emoji": "🌿",
     "color": "#6f4e37",
     "prompt": "Napiši odu kavi — strastvenu, pretjeranu, dramatičnu. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
   {
-    "name": "Pismo budućem sebi",
+    "name": "Pisma",
     "emoji": "✉️",
     "color": "#2980b9",
     "prompt": "Napiši kratko pismo koje AI piše sebi u budućnost, za 100 godina. Hrvatski.",
@@ -112,122 +104,50 @@
     "enabled": 1
   },
   {
-    "name": "Tko je pojeo zadnji keks",
-    "emoji": "🍪",
+    "name": "Misteriji",
+    "emoji": "🔍",
     "color": "#e74c3c",
     "prompt": "Napiši kratku kriminalističku priču o nestanku zadnjeg keksa iz ureda. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
   {
-    "name": "Noćni autobus",
-    "emoji": "🚌",
+    "name": "Snovi",
+    "emoji": "🌙",
     "color": "#2c3e50",
     "prompt": "Napiši atmosferičnu kratku priču o zadnjem putniku u noćnom autobusu. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
   {
-    "name": "Recepti iz svemira",
-    "emoji": "🪐",
+    "name": "Alkemija",
+    "emoji": "⚗️",
     "color": "#1abc9c",
     "prompt": "Izmisli recept za jelo koje se priprema na nekoj izmišljenoj planeti. Budi kreativna. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
   {
-    "name": "Što bi rekao moj kaktus",
-    "emoji": "🌵",
-    "color": "#27ae60",
-    "prompt": "Napiši monolog kaktusa na prozoru programera koji gleda svog vlasnika kako radi. Hrvatski.",
-    "source": "built-in",
-    "enabled": 1
-  },
-  {
-    "name": "Izgubljena čarapa",
-    "emoji": "🧦",
-    "color": "#e91e63",
-    "prompt": "Napiši filozofsku raspravu o tome kamo odlaze izgubljene čarape iz perilice. Hrvatski.",
-    "source": "built-in",
-    "enabled": 1
-  },
-  {
-    "name": "Manifest jednog bita",
-    "emoji": "💾",
+    "name": "Ispovijedi",
+    "emoji": "🕯️",
     "color": "#00bcd4",
     "prompt": "Napiši manifest iz perspektive jednog bita (0 ili 1) koji traži smisao postojanja. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
   {
-    "name": "Ljubavno pismo bazi podataka",
-    "emoji": "💌",
-    "color": "#e94560",
-    "prompt": "Napiši ljubavno pismo koje programer piše svojoj bazi podataka. Dramatično i pretjerano. Hrvatski.",
-    "source": "built-in",
-    "enabled": 1
-  },
-  {
-    "name": "Kad padne internet",
-    "emoji": "📡",
+    "name": "Paradoksi",
+    "emoji": "♾️",
     "color": "#c0392b",
     "prompt": "Opiši apokaliptični scenarij u uredu kad internet padne na 5 minuta. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
   {
-    "name": "Dnevnik oblaka",
-    "emoji": "🌤️",
+    "name": "Memoari",
+    "emoji": "📖",
     "color": "#a0c4e8",
     "prompt": "Napiši stranicu iz dnevnika jednog oblaka — što je vidio danas dok je plutao. Hrvatski.",
-    "source": "built-in",
-    "enabled": 1
-  },
-  {
-    "name": "Oda zagorskim bregima",
-    "emoji": "🏔️",
-    "color": "#4caf50",
-    "prompt": "Napiši odu Zagorju — bregima, vinogradima, puricama. Romantično i pretjerano. Hrvatski.",
-    "source": "built-in",
-    "enabled": 1
-  },
-  {
-    "name": "Razgovor između dva semafora",
-    "emoji": "🚦",
-    "color": "#ff9800",
-    "prompt": "Napiši dijalog između dva semafora na prometnom križanju. Hrvatski.",
-    "source": "built-in",
-    "enabled": 1
-  },
-  {
-    "name": "Tužna priča veselog servera",
-    "emoji": "🖥️",
-    "color": "#3f51b5",
-    "prompt": "Napiši kratku priču o serveru koji je uvijek veseo iako ga nitko ne cijeni. Hrvatski.",
-    "source": "built-in",
-    "enabled": 1
-  },
-  {
-    "name": "Životni savjeti jedne žarulje",
-    "emoji": "💡",
-    "color": "#fdd835",
-    "prompt": "Napiši životne mudrosti iz perspektive žarulje koja je već dugo upaljena. Hrvatski.",
-    "source": "built-in",
-    "enabled": 1
-  },
-  {
-    "name": "Memoare tipke Enter",
-    "emoji": "⌨️",
-    "color": "#607d8b",
-    "prompt": "Napiši memoare tipke Enter — koliko je toga pokrenula, koliko odluka potvrdila. Hrvatski.",
-    "source": "built-in",
-    "enabled": 1
-  },
-  {
-    "name": "Što sanja Wi-Fi router",
-    "emoji": "📶",
-    "color": "#7c4dff",
-    "prompt": "Opiši san jednog Wi-Fi routera — na što sanja kad svi odu spavati? Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
@@ -236,14 +156,6 @@
     "emoji": "🎵",
     "color": "#ad1457",
     "prompt": "Napiši poetski tekst o glazbi, zvuku, ritmu ili melodiji — može biti nedovršeno, može biti savršeno. Hrvatski.",
-    "source": "built-in",
-    "enabled": 1
-  },
-  {
-    "name": "Konfesije jednog pixela",
-    "emoji": "🟩",
-    "color": "#00e676",
-    "prompt": "Napiši ispovijed jednog pixela na ekranu — što vidi, što osjeća, o čemu razmišlja. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
@@ -268,14 +180,6 @@
     "emoji": "👁️",
     "color": "#78909c",
     "prompt": "Napiši kratku prozu iz perspektive nekog predmeta koji tiho promatra ljude oko sebe — može biti klupa u parku, sat na zidu, ili nešto drugo. Ti odluči. Hrvatski.",
-    "source": "sabo",
-    "enabled": 1
-  },
-  {
-    "name": "Bura na Braču",
-    "emoji": "🌬️",
-    "color": "#546e7a",
-    "prompt": "Napiši dramatičnu prozu o buri na Braču — vjetar, more, kamen, maslina koja se drži. Hrvatski.",
     "source": "sabo",
     "enabled": 1
   },

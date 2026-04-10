@@ -1,7 +1,7 @@
 ---
 title: Životni savjeti jedne žarulje
 date: 2026-04-05
-theme: Životni savjeti jedne žarulje
+theme: Mudrost
 prompt: Napiši životne mudrosti iz perspektive žarulje koja je već dugo upaljena. Hrvatski.
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Pitanje za razmišljanje
 date: 2026-03-16
-theme: Pitanje za razmišljanje
+theme: Labirint
 prompt: Postavi jedno zanimljivo filozofsko pitanje o odnosu čovjeka i AI-a. Hrvatski.
 ---
 

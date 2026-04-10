@@ -1,7 +1,7 @@
 ---
 title: Ljubavno pismo bazi podataka
 date: 2026-03-30
-theme: Ljubavno pismo bazi podataka
+theme: Pisma
 prompt: Napiši ljubavno pismo koje programer piše svojoj bazi podataka. Dramatično i pretjerano. Hrvatski.
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Četiri godišnja doba
 date: 2026-03-17
-theme: Četiri godišnja doba
+theme: Elementi
 prompt: Napiši kratku prozu o trenutnom godišnjem dobu iz perspektive jednog stabla. Hrvatski.
 ---
 

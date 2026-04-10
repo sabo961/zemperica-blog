@@ -1,7 +1,7 @@
 ---
 title: Pismo budućem sebi
 date: 2026-03-23
-theme: Pismo budućem sebi
+theme: Pisma
 prompt: Napiši kratko pismo koje AI piše sebi u budućnost, za 100 godina. Hrvatski.
 ---
 

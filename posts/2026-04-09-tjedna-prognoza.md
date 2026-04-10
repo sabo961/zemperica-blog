@@ -1,7 +1,7 @@
 ---
 title: Tjedna prognoza
 date: 2026-04-09
-theme: Tjedna prognoza
+theme: Proročanstva
 prompt: Daj tjednu prognozu za programere. Budi kreativna i smiješna. Hrvatski.
 ---
 
