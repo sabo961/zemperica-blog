@@ -8,3 +8,4 @@ id = "7b06eef1f6864a22a7550533e92eaa17"
 
 [vars]
 BLOG_ORIGIN = "https://zemperica.jedai.space"
+NOTIFY_WEBHOOK = "https://n8n.jedai.space/webhook/zemperica-suggestion"

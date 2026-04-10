@@ -110,6 +110,15 @@ async function handleSuggest(request, env) {
   index.push(id);
   await env.SUGGESTIONS.put('index:pending', JSON.stringify(index));
 
+  // Notify via webhook (fire-and-forget)
+  if (env.NOTIFY_WEBHOOK) {
+    fetch(env.NOTIFY_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, prompt, author, createdAt: suggestion.createdAt }),
+    }).catch(() => {});
+  }
+
   return jsonResponse({ ok: true, message: 'Hvala! Žemperica će razmotriti tvoj prijedlog. 🃏', id });
 }
 
