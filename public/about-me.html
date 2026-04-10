@@ -85,7 +85,8 @@
     }
 
     nav {
-        text-align: center; margin-bottom: 32px;
+        display: flex; flex-wrap: wrap; justify-content: center;
+        gap: 8px 16px; margin-bottom: 32px;
     }
 
     .search-box {
@@ -101,9 +102,9 @@
     .search-box input::placeholder { color: #555; }
 
     nav a {
-        color: #a78bda; text-decoration: none; margin: 0 12px;
+        color: #a78bda; text-decoration: none;
         font-size: 0.9em; letter-spacing: 1px;
-        transition: color 0.2s;
+        transition: color 0.2s; white-space: nowrap;
     }
 
     nav a:hover { color: #e94560; }
@@ -249,10 +250,10 @@
     </header>
     <nav><a href="/index.html">POČETNA</a>
 <a href="/archive.html">ARHIVA</a>
-<a href="/suggest.html">PREDLOŽI TEMU</a>
+<a href="/suggest.html">PREDLOŽI</a>
 <a href="/proposals.html">PRIJEDLOZI</a>
-<a href="/about.html">O ŽEMPERICI</a>
-<a href="/about-me.html" class="active">O MENI</a>
+<a href="/about.html">O MENI</a>
+<a href="/about-me.html" class="active">ŽEMPERICA</a>
 </nav>
     
     <div class="about">

@@ -158,7 +158,8 @@ def base_css():
     }
 
     nav {
-        text-align: center; margin-bottom: 32px;
+        display: flex; flex-wrap: wrap; justify-content: center;
+        gap: 8px 16px; margin-bottom: 32px;
     }
 
     .search-box {
@@ -174,9 +175,9 @@ def base_css():
     .search-box input::placeholder { color: #555; }
 
     nav a {
-        color: #a78bda; text-decoration: none; margin: 0 12px;
+        color: #a78bda; text-decoration: none;
         font-size: 0.9em; letter-spacing: 1px;
-        transition: color 0.2s;
+        transition: color 0.2s; white-space: nowrap;
     }
 
     nav a:hover { color: #e94560; }
@@ -317,10 +318,10 @@ def html_page(title, body, active_nav=""):
     nav_items = [
         ("index.html", "POČETNA", "home"),
         ("archive.html", "ARHIVA", "archive"),
-        ("suggest.html", "PREDLOŽI TEMU", "suggest"),
+        ("suggest.html", "PREDLOŽI", "suggest"),
         ("proposals.html", "PRIJEDLOZI", "proposals"),
-        ("about.html", "O ŽEMPERICI", "about"),
-        ("about-me.html", "O MENI", "aboutme"),
+        ("about.html", "O MENI", "about"),
+        ("about-me.html", "ŽEMPERICA", "aboutme"),
     ]
     nav_html = ""
     for href, label, key in nav_items:
