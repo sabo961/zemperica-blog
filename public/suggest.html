@@ -366,6 +366,7 @@
                 msg.className = 'msg ok';
                 msg.textContent = data.message;
                 document.getElementById('suggestForm').reset();
+                if(typeof loadProposals==='function') loadProposals();
             } else {
                 msg.className = 'msg err';
                 msg.textContent = data.error || 'Nešto je pošlo po krivu.';
@@ -387,29 +388,32 @@
         <div id="proposalsList" style="color:#555; margin-top:16px;">Učitavam...</div>
     </div>
     <script>
-    fetch('https://zemperica-api.stotrideset7.workers.dev/suggestions')
-      .then(function(r){return r.json()})
-      .then(function(d){
-        var el=document.getElementById('proposalsList');
-        if(!d.suggestions||d.suggestions.length===0){
-          el.innerHTML='<p>Nema prijedloga. Budi prvi!</p>';
-          return;
-        }
-        var html='';
-        d.suggestions.slice().reverse().forEach(function(s){
-          var dt=new Date(s.createdAt);
-          var date=dt.toLocaleDateString('hr-HR',{day:'numeric',month:'numeric',year:'numeric'});
-          var time=dt.toLocaleTimeString('hr-HR',{hour:'2-digit',minute:'2-digit'});
-          html+='<div class="post-card" style="margin-bottom:16px;">';
-          html+='<div class="meta"><span class="date">'+date+' · '+time+'</span>';
-          html+='<span style="color:#a78bda;font-size:0.8em;">'+s.author+'</span></div>';
-          html+='<h2 style="color:#e8e8f0;font-size:1.1em;margin-bottom:6px;">'+s.name+'</h2>';
-          html+='<div class="preview" style="color:#888;font-size:0.85em;">'+s.prompt+'</div>';
-          html+='</div>';
-        });
-        el.innerHTML=html;
-      })
-      .catch(function(){document.getElementById('proposalsList').textContent='Greška pri učitavanju.'});
+    function loadProposals(){
+      fetch('https://zemperica-api.stotrideset7.workers.dev/suggestions')
+        .then(function(r){return r.json()})
+        .then(function(d){
+          var el=document.getElementById('proposalsList');
+          if(!d.suggestions||d.suggestions.length===0){
+            el.innerHTML='<p>Nema prijedloga. Budi prvi!</p>';
+            return;
+          }
+          var html='';
+          d.suggestions.slice().reverse().forEach(function(s){
+            var dt=new Date(s.createdAt);
+            var date=dt.toLocaleDateString('hr-HR',{day:'numeric',month:'numeric',year:'numeric'});
+            var time=dt.toLocaleTimeString('hr-HR',{hour:'2-digit',minute:'2-digit'});
+            html+='<div class="post-card" style="margin-bottom:16px;">';
+            html+='<div class="meta"><span class="date">'+date+' · '+time+'</span>';
+            html+='<span style="color:#a78bda;font-size:0.8em;">'+s.author+'</span></div>';
+            html+='<h2 style="color:#e8e8f0;font-size:1.1em;margin-bottom:6px;">'+s.name+'</h2>';
+            html+='<div class="preview" style="color:#888;font-size:0.85em;">'+s.prompt+'</div>';
+            html+='</div>';
+          });
+          el.innerHTML=html;
+        })
+        .catch(function(){document.getElementById('proposalsList').textContent='Greška pri učitavanju.'});
+    }
+    loadProposals();
     </script>
     <script>
     (function(){
