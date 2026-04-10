@@ -214,5 +214,13 @@
     "prompt": "Recepti pisani u stilu djela klasičnih filozofa. Odabir recepta i stil u kojem je pisan treba odražavati filozofiju autora. Hrvatski.",
     "source": "vedran",
     "enabled": 1
+  },
+  {
+    "name": "Iskustva",
+    "emoji": "🤝",
+    "color": "#26a69a",
+    "prompt": "Napiši iskustvo iz neobičnog susreta s nekim. Hrvatski.",
+    "source": "radoznalac",
+    "enabled": 1
   }
 ]
