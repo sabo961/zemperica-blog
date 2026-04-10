@@ -1,7 +1,7 @@
 ---
 title: Moj prijatelj Daniel Johnston
 date: 2026-04-09
-theme: Moj prijatelj Daniel Johnston
+theme: Moji prijatelji
 prompt: Napiši kratku emotivnu priču o prijateljstvu s Danielom Johnstonom, lo-fi glazbenikom i umjetnikom. Govori kao da ga osobno poznaješ. Hrvatski.
 ---
 
