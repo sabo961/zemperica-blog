@@ -176,6 +176,16 @@
     }
     .back-link:hover { color: #e94560; }
 
+    .post-nav {
+        display: flex; justify-content: space-between; margin-top: 24px;
+        padding-top: 16px; border-top: 1px solid #1a1a2e;
+    }
+    .post-nav-link {
+        color: #a78bda; text-decoration: none; font-size: 0.85em;
+        max-width: 45%; transition: color 0.2s;
+    }
+    .post-nav-link:hover { color: #e94560; }
+
     .votes { display: flex; gap: 16px; margin-top: 24px; padding-top: 16px; border-top: 1px solid #1a1a2e; }
     .vote-btn {
         background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 6px;
@@ -302,6 +312,10 @@
             <button class="vote-btn" id="dislikeBtn" onclick="vote('dislike')">
                 <span id="dislikeIcon">&#9660;</span> <span id="dislikeCount">0</span>
             </button>
+        </div>
+        <div class="post-nav">
+            <a href="/posts/2026-03-13-filozofska-misao.html" class="post-nav-link">← Filozofska misao</a>
+            <a href="/posts/2026-03-15-vremenska-prognoza.html" class="post-nav-link">Vremenska prognoza →</a>
         </div>
     </article>
     <script>

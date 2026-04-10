@@ -251,6 +251,16 @@ def base_css():
     }
     .back-link:hover { color: #e94560; }
 
+    .post-nav {
+        display: flex; justify-content: space-between; margin-top: 24px;
+        padding-top: 16px; border-top: 1px solid #1a1a2e;
+    }
+    .post-nav-link {
+        color: #a78bda; text-decoration: none; font-size: 0.85em;
+        max-width: 45%; transition: color 0.2s;
+    }
+    .post-nav-link:hover { color: #e94560; }
+
     .votes { display: flex; gap: 16px; margin-top: 24px; padding-top: 16px; border-top: 1px solid #1a1a2e; }
     .vote-btn {
         background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 6px;
@@ -387,7 +397,7 @@ def post_card(post):
 </div>"""
 
 
-def build_post_page(post):
+def build_post_page(post, prev_post=None, next_post=None):
     theme = post.get('theme', '')
     color = THEME_COLORS.get(theme, '#555')
     emoji = THEME_EMOJI.get(theme, '🃏')
@@ -415,6 +425,10 @@ def build_post_page(post):
             <button class="vote-btn" id="dislikeBtn" onclick="vote('dislike')">
                 <span id="dislikeIcon">&#9660;</span> <span id="dislikeCount">0</span>
             </button>
+        </div>
+        <div class="post-nav">
+            {f'<a href="/posts/{prev_post["slug"]}.html" class="post-nav-link">← {prev_post["title"]}</a>' if prev_post else '<span></span>'}
+            {f'<a href="/posts/{next_post["slug"]}.html" class="post-nav-link">{next_post["title"]} →</a>' if next_post else '<span></span>'}
         </div>
     </article>
     <script>
@@ -614,9 +628,11 @@ def build():
 
     (PUBLIC_DIR / "about-me.html").write_text(html_page("O meni", aboutme_body, "aboutme"))
 
-    # Individual posts
-    for p in posts:
-        (PUBLIC_DIR / "posts" / f"{p['slug']}.html").write_text(build_post_page(p))
+    # Individual posts (with prev/next navigation)
+    for i, p in enumerate(posts):
+        prev_p = posts[i - 1] if i > 0 else None
+        next_p = posts[i + 1] if i < len(posts) - 1 else None
+        (PUBLIC_DIR / "posts" / f"{p['slug']}.html").write_text(build_post_page(p, next_p, prev_p))
 
     # Sitemap
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
