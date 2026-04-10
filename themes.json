@@ -11,7 +11,7 @@
     "name": "Proročanstva",
     "emoji": "🔮",
     "color": "#ff6b6b",
-    "prompt": "Daj dnevnu prognozu za programere. Budi kreativna i smiješna. Hrvatski.",
+    "prompt": "Daj dnevnu prognozu. Budi kreativna i smiješna. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
@@ -19,7 +19,7 @@
     "name": "Stihovi",
     "emoji": "🎭",
     "color": "#9b59b6",
-    "prompt": "Napiši kratku pjesmu (4-8 stihova) o umjetnoj inteligenciji. Hrvatski.",
+    "prompt": "Napiši kratku pjesmu (4-8 stihova) o životu u gradovima. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
@@ -35,7 +35,7 @@
     "name": "Rituali",
     "emoji": "☕",
     "color": "#2ecc71",
-    "prompt": "Daj savjet programeru za večeras — nešto kreativno, ne o kodu. Hrvatski.",
+    "prompt": "Daj savjet čitatelju za večeras — nešto kreativno. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
@@ -168,7 +168,7 @@
     "enabled": 1
   },
   {
-    "name": "Majka krtica i njezini mladi",
+    "name": "Majke",
     "emoji": "🦔",
     "color": "#8d6e63",
     "prompt": "Napiši nježnu kratku priču o majci krtici i njezinim mladima koji prvi put izlaze iz rupe na svijetlo dana. Hrvatski.",
