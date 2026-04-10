@@ -120,6 +120,18 @@ async function handleSuggest(request, env) {
     }).catch(() => {});
   }
 
+  // Notify n8n webhook (fire-and-forget)
+  if (env.N8N_WEBHOOK_URL) {
+    fetch(env.N8N_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Basic ${env.N8N_WEBHOOK_AUTH}`,
+      },
+      body: JSON.stringify({ name, prompt, author, createdAt: suggestion.createdAt }),
+    }).catch(() => {});
+  }
+
   return jsonResponse({ ok: true, message: 'Hvala! Žemperica će razmotriti tvoj prijedlog. 🃏', id });
 }
 
