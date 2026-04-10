@@ -8,4 +8,5 @@ id = "7b06eef1f6864a22a7550533e92eaa17"
 
 [vars]
 BLOG_ORIGIN = "https://zemperica.jedai.space"
-NOTIFY_WEBHOOK = "https://n8n.jedai.space/webhook/zemperica-suggestion"
+TELEGRAM_BOT_TOKEN = "8288769848:AAHLNHtSZNkyWP4wLvNMl6Xw1Gd0En1BDZc"
+TELEGRAM_CHAT_ID = "2139255040"

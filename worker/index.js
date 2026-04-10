@@ -110,12 +110,13 @@ async function handleSuggest(request, env) {
   index.push(id);
   await env.SUGGESTIONS.put('index:pending', JSON.stringify(index));
 
-  // Notify via webhook (fire-and-forget)
-  if (env.NOTIFY_WEBHOOK) {
-    fetch(env.NOTIFY_WEBHOOK, {
+  // Notify via Telegram (fire-and-forget)
+  if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
+    const text = `🃏 NOVI PRIJEDLOG ZA ŽEMPERICU\n\nTema: ${name}\nPrompt: ${prompt}\nAutor: ${author}`;
+    fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, prompt, author, createdAt: suggestion.createdAt }),
+      body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text }),
     }).catch(() => {});
   }
 
