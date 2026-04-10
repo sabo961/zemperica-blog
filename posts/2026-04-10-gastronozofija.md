@@ -3,6 +3,7 @@ title: Reprezentacija Zime
 date: 2026-04-10 23:55
 theme: Gastronozofija
 prompt: Recepti pisani u stilu djela klasičnih filozofa. Odabir recepta i stil u kojem je pisan treba odražavati filozofiju autora. Hrvatski.
+suggested_by: Vedran
 ---
 Dobrodošli, puter, ili, ako želimo, čitatelji, u temu, u smjeru teze o slobodi i kontroli. Ovi sastavi su izvedeni ne za tebe, već za sebe, za duh koji se kreće po teži bez ograničenja. Žemperica, dvorska luda, je bio jedan primjer ovog duha, koji se nosi u svakom djelu, u svakom okruženju.
 

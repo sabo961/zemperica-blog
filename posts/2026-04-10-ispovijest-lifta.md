@@ -3,6 +3,7 @@ title: Ispovijest jednog lifta
 date: 2026-04-10 23:40
 theme: Ispovijedi lifta
 prompt: Napiši ispovijest lifta koji je umoran od vožnje gore-dolje. Hrvatski.
+suggested_by: Bartol
 ---
 Ovo je ispovijest od lifta, koji je umoran i ne želi više vožnju gore-dolje:
 

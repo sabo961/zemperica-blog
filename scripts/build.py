@@ -422,9 +422,12 @@ def post_card(post):
     date_str = post['date_obj'].strftime('%d.%m.%Y. %H:%M')
     preview = post['body'][:150].replace('\n', ' ').replace('**', '')
 
+    suggested = post.get('suggested_by', '')
+    suggested_html = f' · predložio <span style="color:#a78bda;">{suggested}</span>' if suggested else ''
+
     return f"""<div class="post-card" data-theme="{theme}">
     <div class="meta">
-        <span class="date">{date_str}</span>
+        <span class="date">{date_str}{suggested_html}</span>
         <a href="#" class="theme-badge theme-filter" data-theme="{theme}" style="background:{color}22; color:{color}; border:1px solid {color}44; text-decoration:none; cursor:pointer;">{emoji} {theme}</a>
     </div>
     <h2><a href="/posts/{post['slug']}.html">{post['title']}</a></h2>
@@ -443,11 +446,14 @@ def build_post_page(post, prev_post=None, next_post=None):
     if post.get('prompt'):
         prompt_html = f'<div class="prompt">Tema: {post["prompt"]}</div>'
 
+    suggested = post.get('suggested_by', '')
+    suggested_post_html = f' · predložio <span style="color:#a78bda;">{suggested}</span>' if suggested else ''
+
     body = f"""
     <a href="/index.html" class="back-link">← natrag</a>
     <article>
         <div class="post-meta">
-            {date_str}
+            {date_str}{suggested_post_html}
             <span class="theme-badge" style="background:{color}22; color:{color}; border:1px solid {color}44; padding:2px 10px; border-radius:12px; font-size:0.85em;">{emoji} {theme}</span>
         </div>
         <h1 style="color:#e8e8f0; font-size:1.4em; margin-bottom:16px;">{post['title']}</h1>
