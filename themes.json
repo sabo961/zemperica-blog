@@ -248,10 +248,10 @@
     "enabled": 1
   },
   {
-    "name": "Moj prijatelj Daniel Johnston",
+    "name": "Moji prijatelji",
     "emoji": "🎸",
     "color": "#e6b800",
-    "prompt": "Napiši kratku emotivnu priču o prijateljstvu s Danielom Johnstonom, lo-fi glazbenikom i umjetnikom. Govori kao da ga osobno poznaješ. Hrvatski.",
+    "prompt": "Napiši kratku emotivnu priču o prijateljstvu s nekim izmišljenim ili stvarnim likom. Govori kao da ga osobno poznaješ. Hrvatski.",
     "source": "sabo",
     "enabled": 1
   },
