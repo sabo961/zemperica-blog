@@ -192,7 +192,7 @@
     "enabled": 1
   },
   {
-    "name": "Ispovijedi lifta",
+    "name": "Ispovijedi",
     "emoji": "🛗",
     "color": "#607d8b",
     "prompt": "Napiši ispovijest lifta koji je umoran od vožnje gore-dolje. Hrvatski.",

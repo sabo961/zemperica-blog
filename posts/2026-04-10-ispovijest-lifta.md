@@ -1,7 +1,7 @@
 ---
 title: Ispovijest jednog lifta
 date: 2026-04-10 23:40
-theme: Ispovijedi lifta
+theme: Ispovijedi
 prompt: Napiši ispovijest lifta koji je umoran od vožnje gore-dolje. Hrvatski.
 suggested_by: Bartol
 ---
