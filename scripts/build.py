@@ -630,9 +630,9 @@ def build():
 
     # Individual posts (with prev/next navigation)
     for i, p in enumerate(posts):
-        prev_p = posts[i - 1] if i > 0 else None
-        next_p = posts[i + 1] if i < len(posts) - 1 else None
-        (PUBLIC_DIR / "posts" / f"{p['slug']}.html").write_text(build_post_page(p, next_p, prev_p))
+        prev_p = posts[i + 1] if i < len(posts) - 1 else None
+        next_p = posts[i - 1] if i > 0 else None
+        (PUBLIC_DIR / "posts" / f"{p['slug']}.html").write_text(build_post_page(p, prev_p, next_p))
 
     # Sitemap
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
