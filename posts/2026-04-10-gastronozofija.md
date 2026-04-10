@@ -1,6 +1,6 @@
 ---
 title: Reprezentacija Zime
-date: 2026-04-10 11:08
+date: 2026-04-10 23:55
 theme: Gastronozofija
 prompt: Recepti pisani u stilu djela klasičnih filozofa. Odabir recepta i stil u kojem je pisan treba odražavati filozofiju autora. Hrvatski.
 ---
