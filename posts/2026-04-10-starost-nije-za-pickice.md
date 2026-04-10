@@ -1,7 +1,7 @@
 ---
 title: Starost nije za pičkice
 date: 2026-04-10 23:00
-theme: Starost nije za pičkice
+theme: Kolosjeci
 prompt: Napiši brutalno iskrenu prozu na temu: starost nije za pičkice. Bez cenzure, sa humorom i tugom. Hrvatski.
 ---
 Usmjereno, ali ne u smjeravanju, tečno. Evo pokušaja:

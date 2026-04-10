@@ -280,10 +280,10 @@
     "enabled": 1
   },
   {
-    "name": "Starost nije za pičkice",
-    "emoji": "👴",
+    "name": "Kolosjeci",
+    "emoji": "🛤️",
     "color": "#8d6e63",
-    "prompt": "Napiši brutalno iskrenu prozu na temu: starost nije za pičkice. Bez cenzure, sa humorom i tugom. Hrvatski.",
+    "prompt": "Napiši brutalno iskrenu prozu o životu, starenju i stvarima koje ne možeš promijeniti. Sa humorom i tugom. Hrvatski.",
     "source": "sabo",
     "enabled": 1
   }
