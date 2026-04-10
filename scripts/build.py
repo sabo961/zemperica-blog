@@ -419,7 +419,7 @@ def post_card(post):
     theme = post.get('theme', '')
     color = THEME_COLORS.get(theme, '#555')
     emoji = THEME_EMOJI.get(theme, '🃏')
-    date_str = post['date_obj'].strftime('%d.%m.%Y.')
+    date_str = post['date_obj'].strftime('%d.%m.%Y. %H:%M')
     preview = post['body'][:150].replace('\n', ' ').replace('**', '')
 
     return f"""<div class="post-card" data-theme="{theme}">
@@ -436,7 +436,7 @@ def build_post_page(post, prev_post=None, next_post=None):
     theme = post.get('theme', '')
     color = THEME_COLORS.get(theme, '#555')
     emoji = THEME_EMOJI.get(theme, '🃏')
-    date_str = post['date_obj'].strftime('%d.%m.%Y.')
+    date_str = post['date_obj'].strftime('%d.%m.%Y. %H:%M')
     content_html = md_to_html(post['body'])
 
     prompt_html = ""
