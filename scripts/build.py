@@ -818,11 +818,13 @@ def build():
             return;
           }
           var html='';
+          var isAdmin=!!window._adminKey;
           d.suggestions.slice().reverse().forEach(function(s){
             var dt=new Date(s.createdAt);
             var date=dt.toLocaleDateString('hr-HR',{day:'numeric',month:'numeric',year:'numeric'});
             var time=dt.toLocaleTimeString('hr-HR',{hour:'2-digit',minute:'2-digit'});
-            html+='<div class="post-card" style="margin-bottom:16px;">';
+            html+='<div class="post-card" style="margin-bottom:16px;position:relative;">';
+            if(isAdmin) html+='<button onclick="deleteSuggestion(\''+s.id+'\')" style="position:absolute;top:8px;right:10px;background:none;border:none;color:#555;cursor:pointer;font-size:0.9em;transition:color 0.2s;" onmouseover="this.style.color=\'#e74c3c\'" onmouseout="this.style.color=\'#555\'" title="Obriši">✕</button>';
             html+='<div class="meta"><span class="date">'+date+' · '+time+'</span>';
             html+='<span style="color:#a78bda;font-size:0.8em;">'+s.author+'</span></div>';
             html+='<h2 style="color:#e8e8f0;font-size:1.1em;margin-bottom:6px;">'+s.name+'</h2>';
@@ -834,6 +836,12 @@ def build():
         .catch(function(){document.getElementById('proposalsList').textContent='Greška pri učitavanju.'});
     }
     loadProposals();
+    function deleteSuggestion(id){
+      if(!window._adminKey) return;
+      fetch('https://zemperica-api.stotrideset7.workers.dev/suggestion?id='+id+'&adminKey='+window._adminKey,{method:'DELETE'})
+        .then(function(r){return r.json()})
+        .then(function(d){ if(d.ok) loadProposals(); });
+    }
     </script>"""
 
     (PUBLIC_DIR / "suggest.html").write_text(html_page("Predloži temu", suggest_body, "suggest"))
