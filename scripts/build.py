@@ -339,6 +339,7 @@ def html_page(title, body, active_nav=""):
     <meta property="og:url" content="https://zemperica.jedai.space/">
     <meta property="og:site_name" content="Žemperica">
     <meta name="twitter:card" content="summary">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <title>{title} — {SITE_TITLE}</title>
     <style>{base_css()}</style>
 </head>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Face circle -->
+  <circle cx="32" cy="34" r="22" fill="#1a1a2e" stroke="#a78bda" stroke-width="2"/>
+  <!-- Left eye -->
+  <circle cx="24" cy="30" r="3" fill="#e94560"/>
+  <!-- Right eye - winking -->
+  <line x1="37" y1="30" x2="43" y2="30" stroke="#e94560" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Grin -->
+  <path d="M22 40 Q32 48 42 40" fill="none" stroke="#a78bda" stroke-width="2" stroke-linecap="round"/>
+  <!-- Jester hat - three points -->
+  <path d="M10 22 Q18 8 26 18 L32 10 L38 18 Q46 8 54 22" fill="#533483" stroke="#a78bda" stroke-width="1.5"/>
+  <!-- Bells on hat tips -->
+  <circle cx="10" cy="22" r="3" fill="#e6b800"/>
+  <circle cx="32" cy="10" r="3" fill="#e6b800"/>
+  <circle cx="54" cy="22" r="3" fill="#e6b800"/>
+</svg>
