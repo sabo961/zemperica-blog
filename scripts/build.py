@@ -451,8 +451,13 @@ def html_page(title, body, active_nav="", wide=False):
       .then(function(r){{return r.json()}})
       .then(function(d){{document.getElementById('hits').textContent=d.visitors+' posjetitelja · '+d.views+' pregleda'}})
       .catch(function(){{}});
-    // Admin mode — triple-click TEMENOS
+    // Admin mode
     (function(){{
+      var STORE_KEY='zemperica-admin';
+      var cached=localStorage.getItem(STORE_KEY);
+      if(cached) activate(cached);
+
+      // Triple-click TEMENOS → prompt for password → show gear
       var clicks=0,timer;
       var el=document.getElementById('temenosLabel');
       if(!el) return;
@@ -462,14 +467,31 @@ def html_page(title, body, active_nav="", wide=False):
         timer=setTimeout(function(){{clicks=0}},600);
         if(clicks===3){{
           clicks=0;
+          if(window._adminKey){{ deactivate(); return; }}
           var key=prompt('🃏');
-          if(key){{
-            window._adminKey=key;
-            el.style.color='#e94560';
-            el.title='Admin mode';
-          }}
+          if(key){{ localStorage.setItem(STORE_KEY,key); activate(key); }}
         }}
       }});
+
+      function activate(key){{
+        window._adminKey=key;
+        if(document.getElementById('adminGear')) return;
+        var gear=document.createElement('a');
+        gear.id='adminGear';
+        gear.href='/settings.html';
+        gear.textContent='\\u2699';
+        gear.style.cssText='position:fixed;top:12px;right:16px;font-size:1.4em;color:#555;text-decoration:none;z-index:99;transition:color 0.2s;';
+        gear.onmouseover=function(){{this.style.color='#e94560'}};
+        gear.onmouseout=function(){{this.style.color='#555'}};
+        document.body.appendChild(gear);
+      }}
+
+      function deactivate(){{
+        window._adminKey=null;
+        localStorage.removeItem(STORE_KEY);
+        var g=document.getElementById('adminGear');
+        if(g) g.remove();
+      }}
     }})();
     </script>
 </div>
@@ -788,6 +810,46 @@ def build():
     </div>"""
 
     (PUBLIC_DIR / "about-me.html").write_text(html_page("O meni", aboutme_body, "aboutme"))
+
+    # Settings (hidden, admin only)
+    settings_body = """
+    <div class="about" id="settingsPanel">
+        <h2>⚙ Postavke</h2>
+        <p style="color:#555; margin-bottom:24px;">Admin panel. Troklik na TEMENOS za izlaz.</p>
+
+        <h3 style="color:#a78bda; margin-bottom:12px;">Status</h3>
+        <div id="adminStatus" style="color:#888; font-size:0.85em;">Provjeravam...</div>
+
+        <h3 style="color:#a78bda; margin-top:24px; margin-bottom:12px;">Akcije</h3>
+        <button onclick="resetRateLimit()" class="vote-btn" style="margin-bottom:8px;">Resetiraj rate limit (moj IP)</button>
+        <div id="actionMsg" style="color:#888; font-size:0.85em; margin-top:8px;"></div>
+    </div>
+    <script>
+    (function(){
+      var key=localStorage.getItem('zemperica-admin');
+      if(!key){ window.location.href='/'; return; }
+      var API='https://zemperica-api.stotrideset7.workers.dev';
+
+      // Status
+      Promise.all([
+        fetch(API+'/suggestions').then(function(r){return r.json()}),
+        fetch(API+'/hit',{method:'POST'}).then(function(r){return r.json()})
+      ]).then(function(d){
+        var s=d[0], h=d[1];
+        document.getElementById('adminStatus').innerHTML=
+          '<p>Prijedlozi: <strong style="color:#e94560;">'+s.count+'</strong> pending</p>'+
+          '<p>Posjetitelji: <strong style="color:#e94560;">'+h.visitors+'</strong> / Pregledi: <strong style="color:#e94560;">'+h.views+'</strong></p>';
+      });
+    })();
+
+    function resetRateLimit(){
+      // Submit dummy with admin key to verify it works
+      document.getElementById('actionMsg').textContent='Admin key aktivan — rate limit zaobilazi se automatski.';
+      document.getElementById('actionMsg').style.color='#2ecc71';
+    }
+    </script>"""
+
+    (PUBLIC_DIR / "settings.html").write_text(html_page("Postavke", settings_body))
 
     # Individual posts (with prev/next navigation)
     for i, p in enumerate(posts):

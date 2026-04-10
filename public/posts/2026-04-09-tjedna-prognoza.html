@@ -458,8 +458,13 @@
       .then(function(r){return r.json()})
       .then(function(d){document.getElementById('hits').textContent=d.visitors+' posjetitelja · '+d.views+' pregleda'})
       .catch(function(){});
-    // Admin mode — triple-click TEMENOS
+    // Admin mode
     (function(){
+      var STORE_KEY='zemperica-admin';
+      var cached=localStorage.getItem(STORE_KEY);
+      if(cached) activate(cached);
+
+      // Triple-click TEMENOS → prompt for password → show gear
       var clicks=0,timer;
       var el=document.getElementById('temenosLabel');
       if(!el) return;
@@ -469,14 +474,31 @@
         timer=setTimeout(function(){clicks=0},600);
         if(clicks===3){
           clicks=0;
+          if(window._adminKey){ deactivate(); return; }
           var key=prompt('🃏');
-          if(key){
-            window._adminKey=key;
-            el.style.color='#e94560';
-            el.title='Admin mode';
-          }
+          if(key){ localStorage.setItem(STORE_KEY,key); activate(key); }
         }
       });
+
+      function activate(key){
+        window._adminKey=key;
+        if(document.getElementById('adminGear')) return;
+        var gear=document.createElement('a');
+        gear.id='adminGear';
+        gear.href='/settings.html';
+        gear.textContent='\u2699';
+        gear.style.cssText='position:fixed;top:12px;right:16px;font-size:1.4em;color:#555;text-decoration:none;z-index:99;transition:color 0.2s;';
+        gear.onmouseover=function(){this.style.color='#e94560'};
+        gear.onmouseout=function(){this.style.color='#555'};
+        document.body.appendChild(gear);
+      }
+
+      function deactivate(){
+        window._adminKey=null;
+        localStorage.removeItem(STORE_KEY);
+        var g=document.getElementById('adminGear');
+        if(g) g.remove();
+      }
     })();
     </script>
 </div>
