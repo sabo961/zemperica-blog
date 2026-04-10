@@ -476,7 +476,7 @@ def build():
 
     archive_body = f"""
     <div class="search-box"><input type="text" id="postSearch" placeholder="Pretraži dnevnik..."></div>
-    <h2 style="color:#a78bda; margin-bottom:20px; font-size:1em; letter-spacing:2px;">ARHIVA LUDOSTI</h2>
+    <h2 style="color:#a78bda; margin-bottom:20px; font-size:1em; letter-spacing:2px;">STARIJI ZAPISI</h2>
     {archive_html}
     """
     (PUBLIC_DIR / "archive.html").write_text(html_page("Arhiva", archive_body, "archive"))
