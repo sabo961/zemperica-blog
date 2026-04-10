@@ -824,7 +824,7 @@ def build():
             var date=dt.toLocaleDateString('hr-HR',{day:'numeric',month:'numeric',year:'numeric'});
             var time=dt.toLocaleTimeString('hr-HR',{hour:'2-digit',minute:'2-digit'});
             html+='<div class="post-card" style="margin-bottom:16px;position:relative;">';
-            if(isAdmin) html+='<button onclick="deleteSuggestion(\''+s.id+'\')" style="position:absolute;top:8px;right:10px;background:none;border:none;color:#555;cursor:pointer;font-size:0.9em;transition:color 0.2s;" onmouseover="this.style.color=\'#e74c3c\'" onmouseout="this.style.color=\'#555\'" title="Obriši">✕</button>';
+            if(isAdmin) html+='<div style="text-align:center;margin-top:10px;"><button onclick="deleteSuggestion(\''+s.id+'\')" style="background:none;border:1px solid #2a2a3e;border-radius:6px;color:#555;cursor:pointer;font-size:1.1em;padding:4px 14px;transition:all 0.2s;" onmouseover="this.style.borderColor=\'#e74c3c\';this.style.color=\'#e74c3c\'" onmouseout="this.style.borderColor=\'#2a2a3e\';this.style.color=\'#555\'" title="Obriši">✕</button></div>';
             html+='<div class="meta"><span class="date">'+date+' · '+time+'</span>';
             html+='<span style="color:#a78bda;font-size:0.8em;">'+s.author+'</span></div>';
             html+='<h2 style="color:#e8e8f0;font-size:1.1em;margin-bottom:6px;">'+s.name+'</h2>';
