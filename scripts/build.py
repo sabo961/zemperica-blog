@@ -324,6 +324,28 @@ def base_css():
         .sidebar .year-group { margin-bottom: 4px; }
     }
 
+    /* Settings panel */
+    .settings-panel {
+        position: fixed; top: 2.8rem; right: 0.7rem; z-index: 99;
+        background: rgba(15, 15, 26, 0.96);
+        border: 1px solid #2a2a3e;
+        border-radius: 10px; padding: 1rem 1.2rem;
+        width: 220px;
+        backdrop-filter: blur(16px);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+        display: none;
+    }
+    .settings-panel.open { display: block; }
+    .settings-panel h4 {
+        font-size: 0.75em; color: #a78bda; letter-spacing: 2px;
+        margin-bottom: 12px; text-align: center;
+    }
+    .settings-section { margin-bottom: 12px; }
+    .settings-section label {
+        font-size: 0.65em; color: #555; text-transform: uppercase;
+        letter-spacing: 1px; display: block; margin-bottom: 6px;
+    }
+
     footer {
         text-align: center; margin-top: 48px; padding-top: 24px;
         border-top: 1px solid #1a1a2e; color: #666;
@@ -457,7 +479,7 @@ def html_page(title, body, active_nav="", wide=False):
       var cached=localStorage.getItem(STORE_KEY);
       if(cached) activate(cached);
 
-      // Triple-click TEMENOS → prompt for password → show gear
+      // Triple-click TEMENOS
       var clicks=0,timer;
       var el=document.getElementById('temenosLabel');
       if(!el) return;
@@ -476,14 +498,41 @@ def html_page(title, body, active_nav="", wide=False):
       function activate(key){{
         window._adminKey=key;
         if(document.getElementById('adminGear')) return;
-        var gear=document.createElement('a');
+        var gear=document.createElement('button');
         gear.id='adminGear';
-        gear.href='/settings.html';
         gear.textContent='\\u2699';
-        gear.style.cssText='position:fixed;top:12px;right:16px;font-size:1.4em;color:#555;text-decoration:none;z-index:99;transition:color 0.2s;';
-        gear.onmouseover=function(){{this.style.color='#e94560'}};
-        gear.onmouseout=function(){{this.style.color='#555'}};
+        gear.style.cssText='position:fixed;top:0.7rem;right:0.9rem;z-index:100;font-size:1.2rem;cursor:pointer;opacity:0.4;transition:opacity 0.2s,transform 0.4s;background:none;border:none;padding:0.3rem;color:#a78bda;';
+        gear.onmouseover=function(){{this.style.opacity='0.9';this.style.transform='rotate(45deg)'}};
+        gear.onmouseout=function(){{this.style.opacity='0.4';this.style.transform=''}};
+        gear.onclick=function(){{
+          var p=document.getElementById('settingsPanel');
+          if(p) p.classList.toggle('open');
+        }};
         document.body.appendChild(gear);
+
+        // Settings panel
+        var panel=document.createElement('div');
+        panel.id='settingsPanel';
+        panel.className='settings-panel';
+        panel.innerHTML='<h4>🃏 POSTAVKE</h4>'
+          +'<div class="settings-section"><label>STATUS</label><div id="adminStatus" style="color:#888;font-size:0.8em;">Učitavam...</div></div>'
+          +'<div class="settings-section"><label>ADMIN</label>'
+          +'<div style="font-size:0.75em;color:#2ecc71;">✓ Rate limit zaobiđen</div>'
+          +'<button onclick="localStorage.removeItem(\\\'zemperica-admin\\\');location.reload()" style="margin-top:8px;background:#1a1a2e;border:1px solid #2a2a3e;border-radius:4px;padding:4px 10px;color:#888;font-family:inherit;font-size:0.7em;cursor:pointer;">Odjava</button>'
+          +'</div>';
+        document.body.appendChild(panel);
+
+        // Fetch status
+        var API='https://zemperica-api.stotrideset7.workers.dev';
+        Promise.all([
+          fetch(API+'/suggestions').then(function(r){{return r.json()}}),
+          fetch(API+'/hit',{{method:'POST'}}).then(function(r){{return r.json()}})
+        ]).then(function(d){{
+          var s=d[0],h=d[1];
+          document.getElementById('adminStatus').innerHTML=
+            'Prijedlozi: <strong style="color:#e94560;">'+s.count+'</strong><br>'
+            +'Posjetitelji: <strong style="color:#e94560;">'+h.visitors+'</strong> · Pregledi: <strong style="color:#e94560;">'+h.views+'</strong>';
+        }}).catch(function(){{}});
       }}
 
       function deactivate(){{
@@ -491,6 +540,8 @@ def html_page(title, body, active_nav="", wide=False):
         localStorage.removeItem(STORE_KEY);
         var g=document.getElementById('adminGear');
         if(g) g.remove();
+        var p=document.getElementById('settingsPanel');
+        if(p) p.remove();
       }}
     }})();
     </script>
@@ -810,46 +861,6 @@ def build():
     </div>"""
 
     (PUBLIC_DIR / "about-me.html").write_text(html_page("O meni", aboutme_body, "aboutme"))
-
-    # Settings (hidden, admin only)
-    settings_body = """
-    <div class="about" id="settingsPanel">
-        <h2>⚙ Postavke</h2>
-        <p style="color:#555; margin-bottom:24px;">Admin panel. Troklik na TEMENOS za izlaz.</p>
-
-        <h3 style="color:#a78bda; margin-bottom:12px;">Status</h3>
-        <div id="adminStatus" style="color:#888; font-size:0.85em;">Provjeravam...</div>
-
-        <h3 style="color:#a78bda; margin-top:24px; margin-bottom:12px;">Akcije</h3>
-        <button onclick="resetRateLimit()" class="vote-btn" style="margin-bottom:8px;">Resetiraj rate limit (moj IP)</button>
-        <div id="actionMsg" style="color:#888; font-size:0.85em; margin-top:8px;"></div>
-    </div>
-    <script>
-    (function(){
-      var key=localStorage.getItem('zemperica-admin');
-      if(!key){ window.location.href='/'; return; }
-      var API='https://zemperica-api.stotrideset7.workers.dev';
-
-      // Status
-      Promise.all([
-        fetch(API+'/suggestions').then(function(r){return r.json()}),
-        fetch(API+'/hit',{method:'POST'}).then(function(r){return r.json()})
-      ]).then(function(d){
-        var s=d[0], h=d[1];
-        document.getElementById('adminStatus').innerHTML=
-          '<p>Prijedlozi: <strong style="color:#e94560;">'+s.count+'</strong> pending</p>'+
-          '<p>Posjetitelji: <strong style="color:#e94560;">'+h.visitors+'</strong> / Pregledi: <strong style="color:#e94560;">'+h.views+'</strong></p>';
-      });
-    })();
-
-    function resetRateLimit(){
-      // Submit dummy with admin key to verify it works
-      document.getElementById('actionMsg').textContent='Admin key aktivan — rate limit zaobilazi se automatski.';
-      document.getElementById('actionMsg').style.color='#2ecc71';
-    }
-    </script>"""
-
-    (PUBLIC_DIR / "settings.html").write_text(html_page("Postavke", settings_body))
 
     # Individual posts (with prev/next navigation)
     for i, p in enumerate(posts):
