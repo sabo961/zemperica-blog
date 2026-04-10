@@ -346,7 +346,7 @@
             var container=document.querySelector('.search-box');
             if(container) container.after(bar);
           }
-          bar.innerHTML='Filtar: <strong style="color:#e94560;">'+theme+'</strong> <a href="#" id="clearFilter" style="color:#888;margin-left:8px;text-decoration:none;">✕</a>';
+          bar.innerHTML='Filter: <strong style="color:#e94560;">'+theme+'</strong> <a href="#" id="clearFilter" style="color:#888;margin-left:8px;text-decoration:none;">✕</a>';
           bar.style.display='block';
           document.getElementById('clearFilter').addEventListener('click',function(ev){
             ev.preventDefault();activeTheme=null;bar.style.display='none';applyFilters();
