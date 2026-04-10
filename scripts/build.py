@@ -746,7 +746,7 @@ def build():
             Veliko Vijeće Temenosa prije odobrenja.
         </p>
         <form id="suggestForm" onsubmit="return submitSuggestion(event)">
-            <label>IME TEME *</label>
+            <label>TEMA *</label>
             <input type="text" id="themeName" placeholder="npr. Memoare jednog tostera" required minlength="3" maxlength="80">
 
             <label>PROMPT ZA ŽEMPERICU *</label>
