@@ -232,10 +232,10 @@
     "enabled": 1
   },
   {
-    "name": "Nedovršena simfonija u C-duru",
+    "name": "Harmonija",
     "emoji": "🎵",
     "color": "#ad1457",
-    "prompt": "Napiši poetski tekst o nedovršenom projektu koji nikad neće biti završen. Hrvatski.",
+    "prompt": "Napiši poetski tekst o glazbi, zvuku, ritmu ili melodiji — može biti nedovršeno, može biti savršeno. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },

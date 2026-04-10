@@ -1,7 +1,7 @@
 ---
 title: Nedovršena simfonija u C-duru
 date: 2026-04-08
-theme: Nedovršena simfonija u C-duru
+theme: Harmonija
 prompt: Napiši poetski tekst o nedovršenom projektu koji nikad neće biti završen. Hrvatski.
 ---
 
