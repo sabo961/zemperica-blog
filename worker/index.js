@@ -52,6 +52,19 @@ export default {
       return jsonResponse({ slug, likes, dislikes });
     }
 
+    // DELETE /suggestion?id=xxx&adminKey=xxx — remove a suggestion
+    if (request.method === 'DELETE' && url.pathname === '/suggestion') {
+      const id = url.searchParams.get('id');
+      const key = url.searchParams.get('adminKey');
+      if (key !== env.ADMIN_KEY) return jsonResponse({ error: 'Unauthorized' }, 403);
+      if (!id) return jsonResponse({ error: 'Missing id' }, 400);
+      await env.SUGGESTIONS.delete(`suggestion:${id}`);
+      const index = JSON.parse(await env.SUGGESTIONS.get('index:pending') || '[]');
+      const newIndex = index.filter(i => i !== id);
+      await env.SUGGESTIONS.put('index:pending', JSON.stringify(newIndex));
+      return jsonResponse({ ok: true, deleted: id });
+    }
+
     return new Response('🃏 Žemperica API', {
       headers: { 'Content-Type': 'text/plain; charset=utf-8', ...CORS_HEADERS },
     });
