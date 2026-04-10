@@ -135,6 +135,7 @@ def base_css():
         max-width: 720px; margin: 0 auto; padding: 40px 20px;
         position: relative; z-index: 1;
     }
+    .container.wide { max-width: 960px; }
 
     header {
         text-align: center; margin-bottom: 48px;
@@ -283,6 +284,46 @@ def base_css():
     .about .stat .num { font-size: 1.8em; color: #e94560; display: block; }
     .about .stat .label { font-size: 0.75em; color: #555; letter-spacing: 1px; }
 
+    /* Sidebar layout */
+    .with-sidebar {
+        display: flex; gap: 32px; align-items: flex-start;
+    }
+    .with-sidebar .main-col { flex: 1; min-width: 0; }
+    .sidebar {
+        width: 180px; flex-shrink: 0; position: sticky; top: 20px;
+        background: rgba(15, 15, 26, 0.75); border: 1px solid #1a1a2e;
+        border-radius: 8px; padding: 16px; font-size: 0.8em;
+    }
+    .sidebar h3 {
+        color: #a78bda; font-size: 0.85em; letter-spacing: 2px;
+        margin-bottom: 12px;
+    }
+    .sidebar .year-group { margin-bottom: 12px; }
+    .sidebar .year-label {
+        color: #e94560; font-size: 0.9em; cursor: pointer;
+        margin-bottom: 4px; letter-spacing: 1px;
+    }
+    .sidebar .month-link {
+        display: block; color: #888; text-decoration: none;
+        padding: 2px 0 2px 12px; transition: color 0.2s;
+        cursor: pointer; font-size: 0.9em;
+    }
+    .sidebar .month-link:hover { color: #a78bda; }
+    .sidebar .month-link.active { color: #e94560; }
+    .sidebar .month-count {
+        color: #444; font-size: 0.85em; margin-left: 4px;
+    }
+    @media (max-width: 768px) {
+        .with-sidebar { flex-direction: column; }
+        .sidebar {
+            width: 100%; position: static;
+            display: flex; flex-wrap: wrap; gap: 4px 16px;
+            padding: 12px;
+        }
+        .sidebar h3 { width: 100%; margin-bottom: 8px; }
+        .sidebar .year-group { margin-bottom: 4px; }
+    }
+
     footer {
         text-align: center; margin-top: 48px; padding-top: 24px;
         border-top: 1px solid #1a1a2e; color: #666;
@@ -314,7 +355,7 @@ def base_css():
     """
 
 
-def html_page(title, body, active_nav=""):
+def html_page(title, body, active_nav="", wide=False):
     nav_items = [
         ("index.html", "POČETNA", "home"),
         ("archive.html", "ARHIVA", "archive"),
@@ -347,7 +388,7 @@ def html_page(title, body, active_nav=""):
 </head>
 <body>
 <div class="stars"></div>
-<div class="container">
+<div class="container{' wide' if wide else ''}">
     <header>
         <h1>{SITE_TITLE}</h1>
         <div class="subtitle">{SITE_SUBTITLE}</div>
@@ -534,16 +575,35 @@ def build():
     archive_html = ""
     for (year, month) in sorted(by_month.keys(), reverse=True):
         month_name = MONTH_NAMES_HR.get(month, str(month))
-        archive_html += f'<div class="month-header">{month_name} {year}</div>\n'
+        archive_html += f'<div class="month-header" id="m-{year}-{month}">{month_name} {year}</div>\n'
         for p in by_month[(year, month)]:
             archive_html += post_card(p) + "\n"
 
+    # Sidebar
+    sidebar_html = '<aside class="sidebar"><h3>ARHIVA</h3>\n'
+    by_year = defaultdict(list)
+    for (year, month) in sorted(by_month.keys(), reverse=True):
+        by_year[year].append(month)
+    for year in sorted(by_year.keys(), reverse=True):
+        sidebar_html += f'<div class="year-group"><div class="year-label">{year}</div>\n'
+        for month in by_year[year]:
+            month_name = MONTH_NAMES_HR.get(month, str(month))
+            count = len(by_month[(year, month)])
+            sidebar_html += f'<a class="month-link" href="#m-{year}-{month}">{month_name}<span class="month-count">({count})</span></a>\n'
+        sidebar_html += '</div>\n'
+    sidebar_html += '</aside>'
+
     archive_body = f"""
     <div class="search-box"><input type="text" id="postSearch" placeholder="Pretraži dnevnik..."></div>
+    <div class="with-sidebar">
+    {sidebar_html}
+    <div class="main-col">
     <h2 style="color:#a78bda; margin-bottom:20px; font-size:1em; letter-spacing:2px;">STARIJI ZAPISI</h2>
     {archive_html}
+    </div>
+    </div>
     """
-    (PUBLIC_DIR / "archive.html").write_text(html_page("Arhiva", archive_body, "archive"))
+    (PUBLIC_DIR / "archive.html").write_text(html_page("Arhiva", archive_body, "archive", wide=True))
 
     # About
     total = len(posts)
