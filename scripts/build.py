@@ -339,7 +339,8 @@ def html_page(title, body, active_nav=""):
     <meta property="og:url" content="https://zemperica.jedai.space/">
     <meta property="og:site_name" content="Žemperica">
     <meta name="twitter:card" content="summary">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <title>{title} — {SITE_TITLE}</title>
     <style>{base_css()}</style>
 </head>
