@@ -604,8 +604,8 @@ def build_post_page(post, prev_post=None, next_post=None):
             </button>
         </div>
         <div class="post-nav">
-            {f'<a href="/posts/{prev_post["slug"]}.html" class="post-nav-link">← {prev_post["title"]}</a>' if prev_post else '<span></span>'}
-            {f'<a href="/posts/{next_post["slug"]}.html" class="post-nav-link">{next_post["title"]} →</a>' if next_post else '<span></span>'}
+            {f'<a href="/posts/{next_post["slug"]}.html" class="post-nav-link">← {next_post["title"]}</a>' if next_post else '<span></span>'}
+            {f'<a href="/posts/{prev_post["slug"]}.html" class="post-nav-link">{prev_post["title"]} →</a>' if prev_post else '<span></span>'}
         </div>
     </article>
     <script>
