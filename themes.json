@@ -35,7 +35,7 @@
     "name": "Rituali",
     "emoji": "☕",
     "color": "#2ecc71",
-    "prompt": "Daj savjet čitatelju za večeras — nešto kreativno. Hrvatski.",
+    "prompt": "Daj savjet čitatelju-//,- za večeras — nešto kreativno. Hrvatski.",
     "source": "built-in",
     "enabled": 1
   },
